@@ -87,6 +87,11 @@ ASVGNodeClasses >> stop [
 ]
 
 { #category : #'as yet unclassified' }
+ASVGNodeClasses >> style [
+	^ ASStyle
+]
+
+{ #category : #'as yet unclassified' }
 ASVGNodeClasses >> text [
 	^ ASText
 ]

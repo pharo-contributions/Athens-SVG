@@ -11,6 +11,8 @@ Class {
 
 { #category : #'as yet unclassified' }
 ASGradientStop >> asRampColorWithOpacity: aFloat [ 
+	
+		color ifNil: [ color := Color white ].
 
 		^ Association key: offset value: (color alpha: self opacity * aFloat)
 ]

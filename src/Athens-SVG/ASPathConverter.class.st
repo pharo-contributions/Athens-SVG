@@ -226,7 +226,7 @@ Draws an elliptical arc from the current point to (x, y). The size and orientati
 	
 	pt ifNil: [ self error: 'Invalid path data for elliptical arc segment'].
 
-	self ellipticalArc: r xrot: xrot large: large sweep: sweep to: pt.
+	self ellipticalArc: r xrot: xrot large: large sweep: sweep to: pt relative: absolute not.
 	] repeat.
 
 
@@ -234,6 +234,12 @@ Draws an elliptical arc from the current point to (x, y). The size and orientati
 
 { #category : #operations }
 ASPathConverter >> ellipticalArc: r xrot: xrot large: large sweep: sweep to: pt [
+
+	self addSegment
+]
+
+{ #category : #operations }
+ASPathConverter >> ellipticalArc: r xrot: xrot large: large sweep: sweep to: pt relative: isRelative [
 
 	self addSegment
 ]

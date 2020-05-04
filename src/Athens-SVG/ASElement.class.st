@@ -52,6 +52,25 @@ ASElement class >> translateNode: xmlNode parent: aParent [
 ]
 
 { #category : #'attribute management' }
+ASElement >> applyAttributes: svgAttributes [
+
+	svgAttributes fill ifNotNil: [ 
+		self fill: (svgAttributes fill) ].
+
+	svgAttributes stroke ifNotNil: [ 
+		self stroke: (svgAttributes stroke) ].
+
+	svgAttributes fillOpacity ifNotNil: [ 
+		self fill_opacity: (svgAttributes fillOpacity) ].
+
+	svgAttributes fillOpacity ifNotNil: [ 
+		self stroke: (svgAttributes stroke) ].
+
+	svgAttributes fillRule ifNotNil: [ 
+		self fill_rule: (svgAttributes fillRule) ].
+]
+
+{ #category : #'attribute management' }
 ASElement >> attributeAt: name [
 	^ attributes at: name ifAbsent: nil
 ]
@@ -70,6 +89,24 @@ ASElement >> attributeSetter: aString [
 	| sel |
 	sel := aString collect: [ :c | ('-:' includes: c) ifTrue: [ $_] ifFalse: [ c ]].
 	^ (sel copyWith: $:) asSymbol 
+]
+
+{ #category : #attributes }
+ASElement >> class: anObject [
+
+	| classNames existingClasses mergedAttributes |
+	
+	classNames := anObject substrings.
+	self attributeAt: #class put: classNames.
+
+	existingClasses := classNames collect: [ :className |
+		self root cssClasses at: className ifPresent: [ :class | class ]] thenSelect: #notNil.
+	
+	existingClasses ifEmpty: [ ^ self ].
+	
+	mergedAttributes := existingClasses allButFirst inject: existingClasses first attributes into: [ :final :each   | final mergeWith: each attributes ].
+	
+	self applyAttributes: mergedAttributes.
 ]
 
 { #category : #attributes }

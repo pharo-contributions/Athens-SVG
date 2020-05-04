@@ -8,7 +8,8 @@ Class {
 		'width',
 		'height',
 		'ids',
-		'viewBox'
+		'viewBox',
+		'cssClasses'
 	],
 	#category : #'Athens-SVG'
 }
@@ -30,9 +31,22 @@ ASVGRoot >> contentStyleType: aString [
 	self yourself 
 ]
 
+{ #category : #initialize }
+ASVGRoot >> cssClasses [ 
+	
+	^ cssClasses
+]
+
 { #category : #accessing }
 ASVGRoot >> height [
-	^ height
+
+	^ height ifNil: [ 
+		viewBox 
+			ifNotNil: [ :aRectangle | 
+				ASLength new 
+					value: aRectangle height;
+					units: 'px' ] 
+			ifNil: [ 0 ] ]
 ]
 
 { #category : #accessing }
@@ -50,6 +64,8 @@ ASVGRoot >> inheritedAttributeAt: name [
 ASVGRoot >> initialize [ 
 	super initialize.
 	ids := Dictionary new.
+	
+	cssClasses := Dictionary new.
 ]
 
 { #category : #'to be done' }
@@ -113,7 +129,14 @@ ASVGRoot >> viewBox: aString [
 
 { #category : #accessing }
 ASVGRoot >> width [
-	^ width
+
+	^ width ifNil: [ 
+		viewBox 
+			ifNotNil: [ :aRectangle | 
+				ASLength new 
+					value: aRectangle width;
+					units: 'px' ] 
+			ifNil: [ 0 ] ]
 ]
 
 { #category : #accessing }
