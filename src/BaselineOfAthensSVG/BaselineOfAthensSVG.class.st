@@ -12,7 +12,7 @@ BaselineOfAthensSVG >> baseline: spec [
 		spec baseline: 'XMLParser' with: [
 			spec repository: 'github://pharo-contributions/XML-XMLParser/src' ].
 		spec baseline: 'SmaCC' with: [
-			spec repository: 'github://SmaCCRefactoring/SmaCC'; load: 'Runtime' ].
+			spec repository: 'github://SmaCCRefactoring/SmaCC'; loads: 'Runtime' ].
 
 		spec package: 'Athens-SVG-Support'.
 		spec package: 'Athens-SVG-Parsers'.
