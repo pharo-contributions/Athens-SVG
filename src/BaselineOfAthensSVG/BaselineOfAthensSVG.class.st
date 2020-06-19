@@ -9,6 +9,9 @@ BaselineOfAthensSVG >> baseline: spec [
 	<baseline>
 
 	spec for: #common do: [
+
+		spec package: 'Athens-SVG-PathConverter'.
+
 		spec baseline: 'XMLParser' with: [
 			spec repository: 'github://pharo-contributions/XML-XMLParser/src' ].
 		spec baseline: 'SmaCC' with: [
@@ -16,6 +19,9 @@ BaselineOfAthensSVG >> baseline: spec [
 
 		spec package: 'Athens-SVG-Support'.
 		spec package: 'Athens-SVG-Parsers'.
-		spec package: 'Athens-SVG'
+		spec package: 'Athens-SVG'.
+		
+		spec group: 'PathConverter' with: #('Athens-SVG-PathConverter').
+		spec group: 'default' with: #('XMLParser' 'SmaCC' 'Athens-SVG-Support' 'Athens-SVG-Parsers' 'Athens-SVG').
 	].		
 ]
