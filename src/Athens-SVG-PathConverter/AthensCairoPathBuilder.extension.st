@@ -1,6 +1,6 @@
 Extension { #name : #AthensCairoPathBuilder }
 
-{ #category : #'*Athens-SVG' }
+{ #category : #'*Athens-SVG-PathConverter' }
 AthensCairoPathBuilder >> arcDegreeStart: aStartAngle sweep: aSweepAngle centerX: anX y: aY radius: aRadius [ 
 	^self 
 		arcRadianStart: aStartAngle degreesToRadians
@@ -10,7 +10,7 @@ AthensCairoPathBuilder >> arcDegreeStart: aStartAngle sweep: aSweepAngle centerX
 		radius: aRadius
 ]
 
-{ #category : #'*Athens-SVG' }
+{ #category : #'*Athens-SVG-PathConverter' }
 AthensCairoPathBuilder >> arcRadianStart: aStartAngle sweep: aSweepAngle centerX: anX y: aY radius: aRadius [ 
 	| endAngle |
 	
@@ -22,7 +22,7 @@ AthensCairoPathBuilder >> arcRadianStart: aStartAngle sweep: aSweepAngle centerX
 			[ self arcNegativeCenterX: anX centerY: aY radius: aRadius startAngle: aStartAngle endAngle: endAngle ].
 ]
 
-{ #category : #'*Athens-SVG' }
+{ #category : #'*Athens-SVG-PathConverter' }
 AthensCairoPathBuilder >> ellipticalArc3: radii xrot: xAxisRotation large: largeArcFlag sweep: sweepFlag to: theEndPoint [
 
 "	 self cwArcTo: pt angle: 45 degreesToRadians  "
@@ -100,7 +100,7 @@ AthensCairoPathBuilder >> ellipticalArc3: radii xrot: xAxisRotation large: large
 
 ]
 
-{ #category : #'*Athens-SVG' }
+{ #category : #'*Athens-SVG-PathConverter' }
 AthensCairoPathBuilder >> ellipticalArc: radii xrot: xAxisRotation large: largeArcFlag sweep: sweepFlag to: theEndPoint [
 
 "	 self cwArcTo: pt angle: 45 degreesToRadians  "
@@ -188,7 +188,7 @@ endPoint := self toAbsolute: theEndPoint.
 "
 ]
 
-{ #category : #'*Athens-SVG' }
+{ #category : #'*Athens-SVG-PathConverter' }
 AthensCairoPathBuilder >> ellipticalArc: radii xrot: xAxisRotation large: largeArcFlag sweep: sweepFlag to: theEndPoint relative: isRelative [
 
 "	 self cwArcTo: pt angle: 45 degreesToRadians  "
