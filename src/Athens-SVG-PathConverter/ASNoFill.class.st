@@ -4,7 +4,7 @@ Class {
 	#classInstVars : [
 		'soleInstance'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-PathConverter'
 }
 
 { #category : #'as yet unclassified' }

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'stream'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-PathConverter'
 }
 
 { #category : #'parsing-public' }
