@@ -27,9 +27,7 @@ AthensCairoPathBuilder >> ellipticalArc3: radii xrot: xAxisRotation large: large
 
 "	 self cwArcTo: pt angle: 45 degreesToRadians  "
 	
-	| rx ry x1 y1 x2 y2 dx2 dy2 phi cosAngle sinAngle arx ary coeff cx1 cy1 ux uy vx vy sign xPrime1 yPrime1 r  radical  startAngle  sweepAngle cx cy aPoint |
-	
-	
+	| rx ry x1 y1 x2 y2 dx2 dy2 phi cosAngle sinAngle arx ary coeff cx1 cy1 ux uy vx vy sign xPrime1 yPrime1 radical startAngle sweepAngle cx cy aPoint |
 	aPoint := lastControlPoint.
 	
 	rx := radii x.
@@ -105,9 +103,7 @@ AthensCairoPathBuilder >> ellipticalArc: radii xrot: xAxisRotation large: largeA
 
 "	 self cwArcTo: pt angle: 45 degreesToRadians  "
 	
-	| rx ry x1 y1 x2 y2 dx2 dy2 phi cosAngle sinAngle arx ary coeff cx1 cy1 ux uy vx vy sign xPrime1 yPrime1 r  radical  startAngle  sweepAngle cx cy aPoint lFlag swFlag isRelative aCenter |
-	
-	
+	| rx ry x1 y1 x2 y2 dx2 dy2 phi cosAngle sinAngle arx ary coeff cx1 cy1 ux uy vx vy sign xPrime1 yPrime1 radical startAngle sweepAngle cx cy aPoint lFlag swFlag isRelative aCenter |
 	aPoint := 0@0.
 	
 	lFlag := false.
@@ -193,7 +189,7 @@ AthensCairoPathBuilder >> ellipticalArc: radii xrot: xAxisRotation large: largeA
 
 "	 self cwArcTo: pt angle: 45 degreesToRadians  "
 	
-	| rx ry x1 y1 x2 y2 dx2 dy2 phi cosAngle sinAngle arx ary coeff cx1 cy1 ux uy vx vy sign xPrime1 yPrime1 r  radical  startAngle  sweepAngle cx cy aPoint lFlag swFlag aCenter uySign |
+	| rx ry x1 y1 x2 y2 dx2 dy2 arx ary coeff cx1 cy1 ux uy vx vy sign xPrime1 yPrime1 radical  startAngle sweepAngle cx cy aPoint lFlag swFlag aCenter uySign |
 	
 	
 	aPoint := isRelative
