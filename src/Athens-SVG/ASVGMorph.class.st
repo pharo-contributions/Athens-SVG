@@ -10,11 +10,54 @@ Class {
 	#category : #'Athens-SVG'
 }
 
+{ #category : #'file service' }
+ASVGMorph class >> fileReaderServicesForFile: fullName suffix: suffix [
+	<fileService>
+
+	^ (#('svg') includes: suffix)
+		ifTrue: [ self services]
+		ifFalse: [#()]
+
+]
+
 { #category : #'instance creation' }
 ASVGMorph class >> fromFile: aFileName [
 	| svg |
 	svg := AthensSVGConverter fromFile: aFileName.
 	^ self new svg: svg 
+]
+
+{ #category : #'file service' }
+ASVGMorph class >> openImageAsMorph: fullName [ 
+	
+	| fileReference aMorph parser xmlDoc svgRoot |
+	fileReference := fullName asFileReference.
+	parser := XMLDOMParser on: (XMLDecodingReadStreamAdapter nonDecodingOn: fileReference binaryReadStream wrappedStream) documentURI: fileReference uri.
+	xmlDoc := parser parseDocument.
+	svgRoot :=  AthensSVGConverter new importXMLDocument: xmlDoc.
+
+	aMorph := self new svg: svgRoot.
+	aMorph openInWorld.
+]
+
+{ #category : #'file service' }
+ASVGMorph class >> serviceOpenImageAsMorph [
+	"Answer a service for opening a graphic in a window"
+
+	^ SimpleServiceEntry 
+		provider: self 
+		label: 'Open graphic as a morph'
+		selector: #openImageAsMorph:
+		description: 'Open a graphic file as a moprh'
+		buttonLabel: 'Open'
+]
+
+{ #category : #'file service' }
+ASVGMorph class >> services [
+
+	^ Array 
+		with: self serviceOpenImageAsMorph
+
 ]
 
 { #category : #'session management' }
