@@ -41,8 +41,12 @@ SVGReadWriter >> nextPutImage: imageForm [
 
 { #category : #accessing }
 SVGReadWriter >> understandsImageFormat [ 
-	| img |
-	img := self nextImage.
+	| str |
+	str := (stream next: 5) asString.
+	str = '<?xml' ifFalse: [ ^false ].
+"	str := stream upTo: $<.
+	str := (stream next: 3) asString.
+	str = 'svg' ifFalse: [ ^false ]."
 	^true
 	
 ]
