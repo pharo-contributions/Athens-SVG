@@ -42,11 +42,10 @@ SVGReadWriter >> nextPutImage: imageForm [
 { #category : #accessing }
 SVGReadWriter >> understandsImageFormat [ 
 	| str |
-	str := (stream next: 5) asString.
-	str = '<?xml' ifFalse: [ ^false ].
-"	str := stream upTo: $<.
+	stream upTo: $<.
+	"Skip processing directives etc..."
+	[stream peek isLetter] whileFalse: [ stream upTo: $< ].
 	str := (stream next: 3) asString.
-	str = 'svg' ifFalse: [ ^false ]."
-	^true
-	
+	"Does the first element start with svg?"
+	^str = 'svg'
 ]
