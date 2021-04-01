@@ -42,7 +42,9 @@ SVGReadWriter >> nextPutImage: imageForm [
 { #category : #accessing }
 SVGReadWriter >> understandsImageFormat [ 
 	| str |
-	stream upTo: $<.
+	[stream peek isSeparator] whileTrue: [ stream next ].
+	stream peek = $< ifFalse: [ ^false ].
+	stream next.
 	"Skip processing directives etc..."
 	[stream peek isLetter] whileFalse: [ stream upTo: $< ].
 	str := (stream next: 3) asString.
