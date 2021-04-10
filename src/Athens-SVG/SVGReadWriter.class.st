@@ -39,6 +39,11 @@ SVGReadWriter >> nextPutImage: imageForm [
 	self error: 'Cannot convert bitmapped image to vector format.'
 ]
 
+{ #category : #private }
+SVGReadWriter >> on: aBinaryStream [
+	^super on: ZnCharacterReadStream 
+]
+
 { #category : #accessing }
 SVGReadWriter >> understandsImageFormat [ 
 	| str |
