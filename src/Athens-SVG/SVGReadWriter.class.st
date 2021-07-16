@@ -41,7 +41,7 @@ SVGReadWriter >> nextPutImage: imageForm [
 
 { #category : #private }
 SVGReadWriter >> on: aBinaryStream [
-	^super on: ZnCharacterReadStream 
+	^super on: (ZnCharacterReadStream on: aBinaryStream)
 ]
 
 { #category : #accessing }
