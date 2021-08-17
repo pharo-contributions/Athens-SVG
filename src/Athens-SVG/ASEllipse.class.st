@@ -51,7 +51,6 @@ stream << 'M' << (cx - rx) asString << $, << cy asString
 		<< ', ' << (cx - rx) asString << ', ' << (cy + oy) asString
 		<< ', ' << (cx - rx) asString << ', ' << cy asString 
 	<< ',z'.
-Transcript show: stream contents; cr.
 conv := ASPathConverter new stream: stream contents readStream.
 ^ conv convertPathData
 ]
