@@ -40,7 +40,7 @@ ASPath >> d: aString [
 
 	| conv |
 	conv := ASPathConverter new stream: aString readStream.
-	
+
 	pathData := conv convertPathData.
 	bbox := conv bbox.
 ]
