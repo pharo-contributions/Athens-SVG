@@ -7,24 +7,24 @@ Class {
 	#category : #'Athens-SVG-PathConverter'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing' }
 ASNoFill class >> soleInstance [
 
 	^ soleInstance ifNil: [ soleInstance  := self new ]
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'public' }
 ASNoFill >> fill: aShape on: aCanvas [
 	"do nothing"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'public' }
 ASNoFill >> resolveIds: aDictionary [ 
 	^ self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'public' }
 ASNoFill >> stroke: aShape on: aCanvas [
 	"do nothing" 
 
