@@ -39,10 +39,20 @@ SVGReadWriter >> nextPutImage: imageForm [
 	self error: 'Cannot convert bitmapped image to vector format.'
 ]
 
+{ #category : #private }
+SVGReadWriter >> on: aBinaryStream [
+	^super on: (ZnCharacterReadStream on: aBinaryStream)
+]
+
 { #category : #accessing }
 SVGReadWriter >> understandsImageFormat [ 
-	| img |
-	img := self nextImage.
-	^true
-	
+	| str |
+	[stream peek isSeparator] whileTrue: [ stream next ].
+	stream peek = $< ifFalse: [ ^false ].
+	stream next.
+	"Skip processing directives etc..."
+	[stream peek isLetter] whileFalse: [ stream upTo: $< ].
+	str := (stream next: 3) asString.
+	"Does the first element start with svg?"
+	^str = 'svg'
 ]
