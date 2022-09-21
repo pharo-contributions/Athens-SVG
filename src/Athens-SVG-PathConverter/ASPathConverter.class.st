@@ -19,9 +19,7 @@ Class {
 	#instVars : [
 		'segments',
 		'path',
-		'absolute',
-		'min',
-		'max'
+		'absolute'
 	],
 	#category : #'Athens-SVG-PathConverter'
 }
