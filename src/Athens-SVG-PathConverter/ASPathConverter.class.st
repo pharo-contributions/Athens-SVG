@@ -17,7 +17,6 @@ Class {
 	#name : #ASPathConverter,
 	#superclass : #ASConverter,
 	#instVars : [
-		'segments',
 		'path',
 		'absolute'
 	],
