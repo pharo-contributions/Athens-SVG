@@ -65,20 +65,6 @@ ASVGMorphTest class >> inkscapeSVGFileContent [
 
 ]
 
-{ #category : #running }
-ASVGMorphTest >> setUp [ 
-
-	super setUp.
-	
-]
-
-{ #category : #running }
-ASVGMorphTest >> tearDown [ 
-	
-	super tearDown.
-	
-]
-
 { #category : #tests }
 ASVGMorphTest >> testSvgIcon [ 
 
