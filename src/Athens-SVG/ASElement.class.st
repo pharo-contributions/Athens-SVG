@@ -100,7 +100,7 @@ ASElement >> class: anObject [
 	self attributeAt: #class put: classNames.
 
 	existingClasses := classNames collect: [ :className |
-		self root cssClasses at: className ifPresent: [ :class | class ]] thenSelect: #notNil.
+		self root cssClasses at: className ifPresent: [ :class | class ]] thenSelect: #isNotNil.
 	
 	existingClasses ifEmpty: [ ^ self ].
 	

@@ -86,7 +86,7 @@ read fraction, what is after the decimal point:
 	
 	mul := 1/10. 
 	result := 0.
-	[ stream peek notNil and: [ stream peek isDigit ] ] whileTrue: [
+	[ stream peek isNotNil and: [ stream peek isDigit ] ] whileTrue: [
 		result := result + ( (stream next digitValue) * mul ).
 		mul := mul / 10
 	].
@@ -99,7 +99,7 @@ ASConverter >> readInteger [
 	(stream atEnd or: [ stream peek isDigit not ]) ifTrue: [ ^ nil ].
 	
 	result := 0.
-	[ stream peek notNil and: [ stream peek isDigit ] ] whileTrue: [
+	[ stream peek isNotNil and: [ stream peek isDigit ] ] whileTrue: [
 		result := result * 10 + (stream next digitValue)
 	].
 	^ result

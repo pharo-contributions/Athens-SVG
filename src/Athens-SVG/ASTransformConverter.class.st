@@ -68,7 +68,7 @@ If optional parameters <cx> and <cy> are supplied, the rotate is about the point
 		transform rotateByDegrees: angle negated .		
 	] ifNotNil: [
 		"if cx is given, cy should also be present"
-		self assert: cy notNil. 
+		self assert: cy isNotNil. 
 	
 		transform translateX: cx Y: cy. 
 		transform rotateByDegrees: angle negated.		
