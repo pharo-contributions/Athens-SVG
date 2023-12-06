@@ -4,5 +4,5 @@ Class {
 	#instVars : [
 		'opacity'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }

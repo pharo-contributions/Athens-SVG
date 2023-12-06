@@ -16,7 +16,7 @@ This code is based upon the Independent Joint Photographic Experts Group (IJPEG)
 Class {
 	#name : #SVGReadWriter,
 	#superclass : #ImageReadWriter,
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Files'
 }
 
 { #category : #'image reading/writing' }

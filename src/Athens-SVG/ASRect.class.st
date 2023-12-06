@@ -24,7 +24,7 @@ Class {
 		'rx',
 		'ry'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #'as yet unclassified' }

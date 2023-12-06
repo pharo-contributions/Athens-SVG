@@ -8,7 +8,7 @@ Class {
 		'fx',
 		'fy'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #accessing }

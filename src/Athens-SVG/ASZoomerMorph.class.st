@@ -14,7 +14,7 @@ Class {
 		'svgZoom',
 		'animCenter'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Morphic'
 }
 
 { #category : #'as yet unclassified' }

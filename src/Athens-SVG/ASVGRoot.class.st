@@ -11,7 +11,7 @@ Class {
 		'viewBox',
 		'cssClasses'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #'to be done' }

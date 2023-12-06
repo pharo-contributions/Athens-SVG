@@ -1,7 +1,7 @@
 Class {
 	#name : #ASDefs,
 	#superclass : #ASContainerElement,
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #rendering }
