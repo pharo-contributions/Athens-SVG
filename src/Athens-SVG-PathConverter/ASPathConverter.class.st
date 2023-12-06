@@ -262,7 +262,7 @@ Draws a horizontal line from the current point (cpx, cpy) to (x, cpy). H (upperc
 	
 	self hLineTo: x.
 	
-	[ self skipBlanks. x := self nextNumber. x notNil ] whileTrue: [
+	[ self skipBlanks. x := self nextNumber. x isNotNil ] whileTrue: [
 		self hLineTo: x
 	].
 
@@ -302,7 +302,7 @@ Draw a line from the current point to the given (x,y) coordinate which becomes t
 	
 	self lineTo: pt.
 	
-	[ pt := self readPoint. pt notNil ] whileTrue: [ self lineTo: pt ]
+	[ pt := self readPoint. pt isNotNil ] whileTrue: [ self lineTo: pt ]
 ]
 
 { #category : #'builder commands' }
@@ -329,7 +329,7 @@ ASPathConverter >> m [
 			self absolute; moveTo: pt; relative ] 
 		ifFalse: [ self relative; moveTo: pt ].
 
-	[ pt := self readPoint. pt notNil ] whileTrue: [ self lineTo: pt ]
+	[ pt := self readPoint. pt isNotNil ] whileTrue: [ self lineTo: pt ]
 ]
 
 { #category : #operations }
@@ -348,7 +348,7 @@ ASPathConverter >> moveTo [
 	
 	self moveTo: pt.
 	
-	[ pt := self readPoint. pt notNil ] whileTrue: [ self lineTo: pt ]
+	[ pt := self readPoint. pt isNotNil ] whileTrue: [ self lineTo: pt ]
 
 ]
 
@@ -481,7 +481,7 @@ Draws a vertical line from the current point (cpx, cpy) to (cpx, y). V (uppercas
 	
 	self vLineTo: y.
 	
-	[ self skipBlanks. y := self nextNumber. y notNil ] whileTrue: [
+	[ self skipBlanks. y := self nextNumber. y isNotNil ] whileTrue: [
 		self vLineTo: y
 	].
 
