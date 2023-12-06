@@ -7,7 +7,7 @@ Class {
 		'x2',
 		'y2'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #converting }

@@ -1,7 +1,7 @@
 Class {
 	#name : #ASStyle,
 	#superclass : #ASElement,
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #translate }

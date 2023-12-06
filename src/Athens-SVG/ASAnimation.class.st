@@ -8,7 +8,7 @@ Class {
 		'started',
 		'stopCondition'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #accessing }

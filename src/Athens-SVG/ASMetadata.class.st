@@ -1,5 +1,5 @@
 Class {
 	#name : #ASMetadata,
 	#superclass : #ASElement,
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }

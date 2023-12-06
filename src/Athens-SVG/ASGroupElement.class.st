@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'stroke_opacity'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #attributes }

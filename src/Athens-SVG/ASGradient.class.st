@@ -6,7 +6,7 @@ Class {
 		'gradientTransform',
 		'gradientUnits'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #operations }

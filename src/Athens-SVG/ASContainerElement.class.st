@@ -10,7 +10,7 @@ Class {
 	#instVars : [
 		'children'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #rendering }

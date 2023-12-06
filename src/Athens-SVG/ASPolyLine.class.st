@@ -1,7 +1,7 @@
 Class {
 	#name : #ASPolyLine,
 	#superclass : #ASPolygon,
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Base'
 }
 
 { #category : #'as yet unclassified' }

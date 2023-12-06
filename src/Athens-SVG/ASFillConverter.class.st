@@ -1,7 +1,7 @@
 Class {
 	#name : #ASFillConverter,
 	#superclass : #ASConverter,
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Converter'
 }
 
 { #category : #parsing }

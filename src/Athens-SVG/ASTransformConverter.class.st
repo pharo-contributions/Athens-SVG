@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'transform'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Converter'
 }
 
 { #category : #operations }

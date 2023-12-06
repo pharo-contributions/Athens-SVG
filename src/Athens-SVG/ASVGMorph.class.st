@@ -7,7 +7,7 @@ Class {
 		'zoom',
 		'session'
 	],
-	#category : #'Athens-SVG'
+	#category : #'Athens-SVG-Morphic'
 }
 
 { #category : #'file service' }
