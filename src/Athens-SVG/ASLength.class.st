@@ -50,7 +50,6 @@ ASLength >> value: anObject [
 { #category : #converting }
 ASLength >> valueForDPI: dpi [
 
-
 	units = 'cm' ifTrue: [
 		^ value * (dpi / 2.54) asFloat
 		].
@@ -65,5 +64,5 @@ ASLength >> valueForDPI: dpi [
 
 	units isEmpty ifTrue: [ ^ value ].
 
-	self halt
+	self error: 'not yet implemented unit (WIP)'
 ]
