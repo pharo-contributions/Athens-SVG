@@ -1,27 +1,59 @@
+"
+Baseline for Athens SVG support [https://github.com/pharo-contributions/Athens-SVG](https://github.com/pharo-contributions/Athens-SVG)
+"
 Class {
 	#name : #BaselineOfAthensSVG,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfAthensSVG
+	#category : #'BaselineOfAthensSVG-Base'
 }
 
 { #category : #baselines }
 BaselineOfAthensSVG >> baseline: spec [
 	<baseline>
-
+	
 	spec for: #common do: [
+		"Dependencies"
+		self 
+			xmlParser: spec;
+			smaccRuntime: spec.
 
-		spec package: 'Athens-SVG-PathConverter'.
+		"Packages"		
+		spec 
+			package: 'Athens-SVG-PathConverter';
+			package: 'Athens-SVG-Support' with: [ spec requires: 'XMLParser' ];
+			package: 'Athens-SVG-Parsers' with: [ spec requires: #('SmaCC' 'Athens-SVG-Support') ];
+			package: 'Athens-SVG' with: [ spec requires: #('Athens-SVG-PathConverter' 'Athens-SVG-Support') ];
+			package: 'Athens-SVG-Tests' with: [ spec requires: 'Athens-SVG' ].
 
-		spec baseline: 'XMLParser' with: [
-			spec repository: 'github://pharo-contributions/XML-XMLParser/src' ].
-		spec baseline: 'SmaCC' with: [
-			spec repository: 'github://SmaCCRefactoring/SmaCC'; loads: 'Runtime' ].
+		"Groups (custom)"
+		spec 
+			group: 'PathConverter' with: #( 'Athens-SVG-PathConverter' );
+			group: 'Support' with: #( 'Athens-SVG-Support' );
+			group: 'Parsers' with: #( 'Athens-SVG-Parsers' );
+			group: 'Core' with: #( 'Athens-SVG' );
+			group: 'Tests' with: #( 'Athens-SVG-Tests' );
+			group: 'CI' with: #( 'Tests' ).
+		
+		"Groups (standard)"
+		spec
+			group: 'all' with: #( 'PathConverter' 'Support' 'Parsers' 'Core' );
+			group: 'default' with: #( 'all' ) ]
+]
 
-		spec package: 'Athens-SVG-Support'.
-		spec package: 'Athens-SVG-Parsers'.
-		spec package: 'Athens-SVG'.
+{ #category : #dependencies }
+BaselineOfAthensSVG >> smaccRuntime: spec [
 
-		spec group: 'PathConverter' with: #('Athens-SVG-PathConverter').
-		spec group: 'default' with: #('PathConverter' 'XMLParser' 'SmaCC' 'Athens-SVG-Support' 'Athens-SVG-Parsers' 'Athens-SVG').
-	].
+	spec baseline: 'SmaCC' with: [
+		spec
+			repository: 'github://SmaCCRefactoring/SmaCC';
+			loads: 'Runtime' ]
+]
+
+{ #category : #dependencies }
+BaselineOfAthensSVG >> xmlParser: spec [
+
+	spec
+		baseline: 'XMLParser'
+		with: [
+		spec repository: 'github://pharo-contributions/XML-XMLParser/src' ]
 ]
