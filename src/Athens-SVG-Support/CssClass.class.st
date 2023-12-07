@@ -16,7 +16,7 @@ CssClass class >> addColor: colorName from: rgbSpec [
 	" 'yellowgreen'  'rgb(154, 205, 50)'"
 
 	| numbers |
-	numbers := ((rgbSpec copyFrom: 5 to: rgbSpec size - 1) tokensBasedOn: $,)
+	numbers := ((rgbSpec copyFrom: 5 to: rgbSpec size - 1) substrings: ',')
 				collect: [ :each | each trimBoth asNumber ].
 	CSSColors at: colorName asSymbol
 		put: (Color
@@ -188,7 +188,7 @@ CssClass class >> initializeCssColorConstants [
 	whitesmoke	rgb(245, 245, 245)
 	yellow	rgb(255, 255, 0)
 	yellowgreen	rgb(154, 205, 50)'
-				copyWithout: Character cr) tokensBasedOn: Character tab.
+				copyWithout: Character cr) substrings: Character tab asString.
 	CSSColors := Dictionary new.
 	1 to: tokens size
 		by: 2
