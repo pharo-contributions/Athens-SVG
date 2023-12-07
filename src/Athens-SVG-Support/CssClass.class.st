@@ -195,13 +195,6 @@ CssClass class >> initializeCssColorConstants [
 		do: [:index | self addColor: (tokens at: index) from: (tokens at: index + 1)]
 ]
 
-{ #category : #'instance creation' }
-CssClass class >> new [
-	"Answer a newly created and initialized instance."
-
-	^super new initialize
-]
-
 { #category : #accessing }
 CssClass >> attributes [
 
