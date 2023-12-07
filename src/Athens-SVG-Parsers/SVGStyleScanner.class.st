@@ -16,15 +16,6 @@ SVGStyleScanner class >> initializeKeywordMap [
 	^keywordMap
 ]
 
-{ #category : #'VisualWorks metadata' }
-SVGStyleScanner class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'SVGViewer'
-		'superclassNamespace' 'Refactory.SmaCC'
-	)
-]
-
 { #category : #generated }
 SVGStyleScanner >> emptySymbolTokenId [
 

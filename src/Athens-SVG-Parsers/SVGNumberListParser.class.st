@@ -47,15 +47,6 @@ SVGNumberListParser class >> startingStateForListeOuNil [
 	^ 1
 ]
 
-{ #category : #'VisualWorks metadata' }
-SVGNumberListParser class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'SVGViewer'
-		'superclassNamespace' 'Refactory.SmaCC'
-	)
-]
-
 { #category : #'initialize-release' }
 SVGNumberListParser >> initialize [
 	"Initialize a newly created instance. This method must answer the receiver."

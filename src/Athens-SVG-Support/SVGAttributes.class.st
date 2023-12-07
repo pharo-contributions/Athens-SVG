@@ -63,14 +63,6 @@ SVGAttributes class >> new [
 	^super new initialize
 ]
 
-{ #category : #'VisualWorks metadata' }
-SVGAttributes class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'SVGViewer'
-	)
-]
-
 { #category : #'xml support' }
 SVGAttributes >> colorAttribute3: aString [
 
