@@ -37,6 +37,12 @@ ASElement class >> initialize [
 	EmptyDict := IdentityDictionary new
 ]
 
+{ #category : #testing }
+ASElement class >> isAbstract [
+
+	^ self == ASElement
+]
+
 { #category : #'as yet unclassified' }
 ASElement class >> translateNode: xmlNode [
 	| nodeClass |

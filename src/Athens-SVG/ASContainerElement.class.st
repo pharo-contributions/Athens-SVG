@@ -13,6 +13,12 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
+{ #category : #testing }
+ASContainerElement class >> isAbstract [
+
+	^ self == ASContainerElement
+]
+
 { #category : #rendering }
 ASContainerElement >> renderShapeOn: aCanvas [
 
