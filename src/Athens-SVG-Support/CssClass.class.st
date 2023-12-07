@@ -37,7 +37,7 @@ CssClass class >> cssColorNamed: aStringOrSymbol [
 
 { #category : #'instance creation' }
 CssClass class >> initializeCssColorConstants [
-	"List taken rom the website: https://www.w3.org/TR/SVG/types.html#ColorKeywords"
+	"List taken from the website: https://www.w3.org/TR/SVG/types.html#ColorKeywords"
 	"self initializeCssColorConstants"
 
 	| tokens |
