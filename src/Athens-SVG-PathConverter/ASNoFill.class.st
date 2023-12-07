@@ -11,7 +11,6 @@ Class {
 ASNoFill class >> soleInstance [
 
 	^ soleInstance ifNil: [ soleInstance  := self new ]
-	
 ]
 
 { #category : #public }
@@ -20,12 +19,11 @@ ASNoFill >> fill: aShape on: aCanvas [
 ]
 
 { #category : #public }
-ASNoFill >> resolveIds: aDictionary [ 
+ASNoFill >> resolveIds: aDictionary [
 	^ self
 ]
 
 { #category : #public }
 ASNoFill >> stroke: aShape on: aCanvas [
-	"do nothing" 
-
+	"do nothing"
 ]

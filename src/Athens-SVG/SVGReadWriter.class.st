@@ -45,7 +45,7 @@ SVGReadWriter >> on: aBinaryStream [
 ]
 
 { #category : #accessing }
-SVGReadWriter >> understandsImageFormat [ 
+SVGReadWriter >> understandsImageFormat [
 	| str |
 	[stream peek isSeparator] whileTrue: [ stream next ].
 	stream peek = $< ifFalse: [ ^false ].

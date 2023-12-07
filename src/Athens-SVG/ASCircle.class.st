@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-ASCircle >> cx: aString [ 
+ASCircle >> cx: aString [
 "cx = <coordinate>
 The x-axis coordinate of the center of the circle.
 If the attribute is not specified, the effect is as if a value of '0'  were specified."
@@ -19,7 +19,7 @@ If the attribute is not specified, the effect is as if a value of '0'  were spec
 ]
 
 { #category : #'as yet unclassified' }
-ASCircle >> cy: aString [ 
+ASCircle >> cy: aString [
 
 "cy = <coordinate>
 The y-axis coordinate of the center of the circle.
@@ -29,14 +29,14 @@ If the attribute is not specified, the effect is as if a value of 0 were specifi
 ]
 
 { #category : #'as yet unclassified' }
-ASCircle >> initialize [ 
+ASCircle >> initialize [
 	super initialize.
-	
-	cx := cy := 0.
+
+	cx := cy := 0
 ]
 
 { #category : #'as yet unclassified' }
-ASCircle >> r: aString [ 
+ASCircle >> r: aString [
 
 "r = <length>
 The radius of the circle.
@@ -44,9 +44,7 @@ A negative value is an error (see Error processing). A value of zero disables re
 Animatable: yes.
 "
 
-	r := self translateLength: aString.
-	
-
+	r := self translateLength: aString
 ]
 
 { #category : #'as yet unclassified' }
@@ -54,13 +52,12 @@ ASCircle >> setShapeOn: aCanvas [
 	| circle |
 
 	circle := aCanvas createPath: [:builder |
-		builder 
+		builder
 			absolute;
 			moveTo: (cx - r @ cy);
 			cwArcTo: (cx + r @ cy )  angle: 180 degreesToRadians;
 			cwArcTo: (cx - r @ cy)  angle: 180 degreesToRadians
 		].
 
-	aCanvas setShape: circle.
-
+	aCanvas setShape: circle
 ]

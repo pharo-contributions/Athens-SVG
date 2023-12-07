@@ -9,7 +9,7 @@ SVGStyleScanner class >> initializeKeywordMap [
 
 	keywordMap := Dictionary new.
 	#(#(14 'enable-background' 12) #(14 'fill' 3) #(14 'fill-opacity' 10) #(14 'fill-rule' 11) #(14 'stroke' 4) #(14 'stroke-dasharray' 8) #(14 'stroke-linecap' 5) #(14 'stroke-linejoin' 7) #(14 'stroke-miterlimit' 9) #(14 'stroke-width' 6))
-		do: 
+		do:
 			[:each |
 			(keywordMap at: each first ifAbsentPut: [Dictionary new]) at: (each at: 2)
 				put: each last].
@@ -23,7 +23,6 @@ SVGStyleScanner class >> visualWorksMetadata [
 		'namespace' 'SVGViewer'
 		'superclassNamespace' 'Refactory.SmaCC'
 	)
-
 ]
 
 { #category : #generated }
@@ -53,10 +52,10 @@ SVGStyleScanner >> scanForToken [
 	self step.
 	currentCharacter == $; ifTrue: [^self recordAndReportMatch: #(1)].
 	currentCharacter == $:
-		ifTrue: 
+		ifTrue:
 			[self step.
 			currentCharacter ~~ $;
-				ifTrue: 
+				ifTrue:
 					[
 					[self recordMatch: #(13).
 					self step.
@@ -65,7 +64,7 @@ SVGStyleScanner >> scanForToken [
 			^self reportLastMatch].
 	(currentCharacter isBlank
 		or: [currentCharacter between: Character lf and: Character cr])
-			ifTrue: 
+			ifTrue:
 				[
 				[self recordMatch: #(2).
 				self step.
@@ -74,10 +73,10 @@ SVGStyleScanner >> scanForToken [
 						whileTrue.
 				^self reportLastMatch].
 	(currentCharacter isLetter or: [currentCharacter == $-])
-		ifTrue: 
+		ifTrue:
 			[self step.
 			(currentCharacter isAlphaNumeric or: [currentCharacter == $-])
-				ifTrue: 
+				ifTrue:
 					[
 					[self recordMatch: #(14).
 					self step.

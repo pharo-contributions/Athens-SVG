@@ -31,7 +31,7 @@ ASContainerElement >> translate: node [
 	super translate: node.
 	children := node nodes asArray
 		select: [ :each | each isStringNode not ]
-		thenCollect: [ :child | 
+		thenCollect: [ :child |
 			| nodeClass |
 			nodeClass := ASVGNodeClasses fromName: child name.
 			nodeClass new

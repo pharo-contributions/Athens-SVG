@@ -69,7 +69,6 @@ SVGAttributes class >> visualWorksMetadata [
 	^ #(
 		'namespace' 'SVGViewer'
 	)
-
 ]
 
 { #category : #'xml support' }
@@ -328,10 +327,10 @@ SVGAttributes >> lineHeight: anObject [
 { #category : #operations }
 SVGAttributes >> mergeWith: someAttributes [
 
-	self class instVarNames do: 
+	self class instVarNames do:
 			[:aName |
 			(self perform: aName asSymbol) isNil
-				ifTrue: 
+				ifTrue:
 					[self perform: (aName , ':') asSymbol
 						with: (someAttributes perform: aName asSymbol)]]
 ]

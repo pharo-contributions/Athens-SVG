@@ -27,7 +27,7 @@ ASVGNodeClasses >> desc [
 
 { #category : #'as yet unclassified' }
 ASVGNodeClasses >> ellipse [
-	^ ASEllipse 
+	^ ASEllipse
 ]
 
 { #category : #'as yet unclassified' }
@@ -57,7 +57,7 @@ ASVGNodeClasses >> metadata [
 
 { #category : #'as yet unclassified' }
 ASVGNodeClasses >> path [
-	^ ASPath 
+	^ ASPath
 ]
 
 { #category : #'as yet unclassified' }
@@ -67,7 +67,7 @@ ASVGNodeClasses >> polygon [
 
 { #category : #'as yet unclassified' }
 ASVGNodeClasses >> polyline [
-	^ ASPolyLine 
+	^ ASPolyLine
 ]
 
 { #category : #'as yet unclassified' }
@@ -82,7 +82,7 @@ ASVGNodeClasses >> rect [
 
 { #category : #'as yet unclassified' }
 ASVGNodeClasses >> stop [
-	
+
 	^ ASGradientStop
 ]
 

@@ -5,26 +5,21 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-ASText >> font_family: aByteString [ 
-	
+ASText >> font_family: aByteString [
 ]
 
 { #category : #'as yet unclassified' }
-ASText >> font_size: aByteString [ 
-	
+ASText >> font_size: aByteString [
 ]
 
 { #category : #'as yet unclassified' }
 ASText >> setShapeOn: aCanvas [
-	
 ]
 
 { #category : #'as yet unclassified' }
-ASText >> x: aByteString [ 
-	
+ASText >> x: aByteString [
 ]
 
 { #category : #'as yet unclassified' }
-ASText >> y: aByteString [ 
-	
+ASText >> y: aByteString [
 ]

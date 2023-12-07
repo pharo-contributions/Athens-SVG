@@ -31,30 +31,29 @@ ASPathConverter >> A [
 { #category : #'path commands' }
 ASPathConverter >> C [
 
-	^ self absolute; cubicBezier 
+	^ self absolute; cubicBezier
 ]
 
 { #category : #'path commands' }
 ASPathConverter >> H [
-	self absolute; hLineTo 
+	self absolute; hLineTo
 ]
 
 { #category : #'path commands' }
 ASPathConverter >> L [
-	self absolute; lineTo.
+	self absolute; lineTo
 ]
 
 { #category : #'path commands' }
 ASPathConverter >> M [
 	"move-to absolute"
-	" 
-		Start a new sub-path at the given (x,y) coordinate. M (uppercase) indicates that absolute coordinates will follow; m (lowercase) indicates that relative coordinates will follow. 
-		If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates. 
-		If a moveto is followed by multiple pairs of coordinates, the subsequent pairs are treated as implicit lineto commands.
-	
 	"
-	self absolute; moveTo.
+		Start a new sub-path at the given (x,y) coordinate. M (uppercase) indicates that absolute coordinates will follow; m (lowercase) indicates that relative coordinates will follow.
+		If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates.
+		If a moveto is followed by multiple pairs of coordinates, the subsequent pairs are treated as implicit lineto commands.
 
+	"
+	self absolute; moveTo
 ]
 
 { #category : #'path commands' }
@@ -74,7 +73,7 @@ ASPathConverter >> T [
 
 { #category : #'path commands' }
 ASPathConverter >> V [
-	self absolute; vLineTo 
+	self absolute; vLineTo
 ]
 
 { #category : #'path commands' }
@@ -90,7 +89,7 @@ ASPathConverter >> a [
 { #category : #'builder commands' }
 ASPathConverter >> absolute [
 	absolute := true.
-	self addSegment 
+	self addSegment
 ]
 
 { #category : #adding }
@@ -100,16 +99,15 @@ ASPathConverter >> addSegment [
 	sel := 	thisContext sender selector.
 	args := thisContext sender arguments.
 	"update min/max for calculatin bounding box"
-	
+
 	path add: { sel. args }
 ]
 
 { #category : #converting }
-ASPathConverter >> assertValidCommand: aCharacter [ 
+ASPathConverter >> assertValidCommand: aCharacter [
 
 	( #( $M $m $Z $z $L $l $H $h $V $v $C $c $S $s $Q $q $T $t $A $a ) includes: aCharacter ) ifFalse: [
 		self error: 'invalid path segment command' ]
-
 ]
 
 { #category : #accessing }
@@ -120,19 +118,19 @@ ASPathConverter >> bbox [
 { #category : #'path commands' }
 ASPathConverter >> c [
 
-	^ self relative; cubicBezier 
+	^ self relative; cubicBezier
 ]
 
 { #category : #'builder commands' }
 ASPathConverter >> close [
-	self addSegment 
+	self addSegment
 ]
 
 { #category : #operations }
 ASPathConverter >> convertPathData [
 
 	path := OrderedCollection new.
-	
+
 	[ self skipBlanks. stream atEnd ] whileFalse: [
 		| cmd |
 		cmd := stream next.
@@ -141,7 +139,6 @@ ASPathConverter >> convertPathData [
 	].
 
 	^ path
-	
 ]
 
 { #category : #operations }
@@ -151,47 +148,45 @@ ASPathConverter >> cubicBezier [
 "
 C/c (x1 y1 x2 y2 x y)+
 
-Draws a cubic Bézier curve from the current point to (x,y) using (x1,y1) as the control point at the beginning of the curve and (x2,y2) as the control point at the end of the curve. 
-C (uppercase) indicates that absolute coordinates will follow; c (lowercase) indicates that relative coordinates will follow. Multiple sets of coordinates may be specified to draw a polybézier. 
+Draws a cubic Bézier curve from the current point to (x,y) using (x1,y1) as the control point at the beginning of the curve and (x2,y2) as the control point at the end of the curve.
+C (uppercase) indicates that absolute coordinates will follow; c (lowercase) indicates that relative coordinates will follow. Multiple sets of coordinates may be specified to draw a polybézier.
 At the end of the command, the new current point becomes the final (x,y) coordinate pair used in the polybézier.
 "
 	| p1 p2 p3 |
-	
+
 	p1 := self readPoint.
 	p2 := self readPoint.
 	p3 := self readPoint.
-	
+
 	p3 ifNil: [ self error: 'Invalid path data: 3 points expected for cubic bezier '].
 
-	self curveVia: p1 and:  p2 to: p3. 
-	
-	[ 
+	self curveVia: p1 and:  p2 to: p3.
+
+	[
 		(p1 := self readPoint) ifNil: [ ^ self ].
 		p2 := self readPoint.
 		p3 := self readPoint.
 
 		p3 ifNil: [ self error: 'Invalid path data: 3 points expected for cubic bezier '].
-		self curveVia: p1 and:  p2 to: p3. 
-	] repeat.
-
-
+		self curveVia: p1 and:  p2 to: p3.
+	] repeat
 ]
 
 { #category : #'builder commands' }
-ASPathConverter >> curveVia: aPoint and: aPoint2 to: aPoint3 [ 
+ASPathConverter >> curveVia: aPoint and: aPoint2 to: aPoint3 [
 
-	self addSegment 
+	self addSegment
 ]
 
 { #category : #'builder commands' }
-ASPathConverter >> curveVia: aPoint to: aPoint2 [ 
+ASPathConverter >> curveVia: aPoint to: aPoint2 [
 
 
-	self addSegment 
+	self addSegment
 ]
 
 { #category : #operations }
-ASPathConverter >> ellipticalArc [ 
+ASPathConverter >> ellipticalArc [
 
 
 "
@@ -202,31 +197,29 @@ elliptical arc
 Draws an elliptical arc from the current point to (x, y). The size and orientation of the ellipse are defined by two radii (rx, ry) and an x-axis-rotation, which indicates how the ellipse as a whole is rotated relative to the current coordinate system. The center (cx, cy) of the ellipse is calculated automatically to satisfy the constraints imposed by the other parameters. large-arc-flag and sweep- flag contribute to the automatic calculations and help determine how the arc is drawn.
 "
 	| r xrot large sweep pt |
-	
+
 	[
 	r := self readPoint.
 	r ifNil: [ ^ self ].
-	
+
 	self skipBlanksAndComma.
-	
+
 	xrot := self nextNumber.
 
 	self skipBlanksAndComma.
-	
+
 	large := self nextNumber.
 
 	self skipBlanksAndComma.
 
 	sweep := self nextNumber.
-	
+
 	pt := self readPoint.
-	
+
 	pt ifNil: [ self error: 'Invalid path data for elliptical arc segment'].
 
 	self ellipticalArc: r xrot: xrot large: large sweep: sweep to: pt relative: absolute not.
-	] repeat.
-
-
+	] repeat
 ]
 
 { #category : #operations }
@@ -243,7 +236,7 @@ ASPathConverter >> ellipticalArc: r xrot: xrot large: large sweep: sweep to: pt 
 
 { #category : #'path commands' }
 ASPathConverter >> h [
-	self relative; hLineTo 
+	self relative; hLineTo
 ]
 
 { #category : #operations }
@@ -256,38 +249,37 @@ Draws a horizontal line from the current point (cpx, cpy) to (x, cpy). H (upperc
 "
 
 	| x |
-	
+
 	self skipBlanks.
 	x := self nextNumber ifNil: [ ^ self error: 'number expected for horizontal line segment'   ].
-	
+
 	self hLineTo: x.
-	
+
 	[ self skipBlanks. x := self nextNumber. x isNotNil ] whileTrue: [
 		self hLineTo: x
-	].
-
+	]
 ]
 
 { #category : #'builder commands' }
 ASPathConverter >> hLineTo: aNumber [
 
-	self addSegment 
+	self addSegment
 ]
 
 { #category : #'path commands' }
 ASPathConverter >> l [
-	self relative; lineTo.
+	self relative; lineTo
 ]
 
 { #category : #operations }
 ASPathConverter >> lastBezierPoint [
-	path reverseDo: [ :arr | arr first caseOf: { 
+	path reverseDo: [ :arr | arr first caseOf: {
 		[ #relative ] -> [ "ignore" ] } ]
 ]
 
 { #category : #operations }
 ASPathConverter >> lineTo [
-" 
+"
 L (absolute) l (relative)
 lineto
 
@@ -297,36 +289,36 @@ Draw a line from the current point to the given (x,y) coordinate which becomes t
 
 	| pt |
 	pt := self readPoint.
-	
+
 	pt ifNil: [ self error: 'point expected for line segment' ].
-	
+
 	self lineTo: pt.
-	
+
 	[ pt := self readPoint. pt isNotNil ] whileTrue: [ self lineTo: pt ]
 ]
 
 { #category : #'builder commands' }
-ASPathConverter >> lineTo: aPoint [ 
+ASPathConverter >> lineTo: aPoint [
 
-	self addSegment 
+	self addSegment
 ]
 
 { #category : #'path commands' }
 ASPathConverter >> m [
 	"move-to relative"
-	" 
-		Start a new sub-path at the given (x,y) coordinate. M (uppercase) indicates that absolute coordinates will follow; m (lowercase) indicates that relative coordinates will follow. 
-		If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates. 
+	"
+		Start a new sub-path at the given (x,y) coordinate. M (uppercase) indicates that absolute coordinates will follow; m (lowercase) indicates that relative coordinates will follow.
+		If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates.
 		If a moveto is followed by multiple pairs of coordinates, the subsequent pairs are treated as implicit lineto commands.
-	
+
 	"
 	| pt |
 
 	pt := self readPoint.
 	pt ifNil: [ self error: 'a point expected following after M/m command'].
 
-	path isEmpty ifTrue: [ 
-			self absolute; moveTo: pt; relative ] 
+	path isEmpty ifTrue: [
+			self absolute; moveTo: pt; relative ]
 		ifFalse: [ self relative; moveTo: pt ].
 
 	[ pt := self readPoint. pt isNotNil ] whileTrue: [ self lineTo: pt ]
@@ -335,27 +327,26 @@ ASPathConverter >> m [
 { #category : #operations }
 ASPathConverter >> moveTo [
 	"move-to"
-	" 
-		Start a new sub-path at the given (x,y) coordinate. M (uppercase) indicates that absolute coordinates will follow; m (lowercase) indicates that relative coordinates will follow. 
-		If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates. 
+	"
+		Start a new sub-path at the given (x,y) coordinate. M (uppercase) indicates that absolute coordinates will follow; m (lowercase) indicates that relative coordinates will follow.
+		If a relative moveto (m) appears as the first element of the path, then it is treated as a pair of absolute coordinates.
 		If a moveto is followed by multiple pairs of coordinates, the subsequent pairs are treated as implicit lineto commands.
-	
+
 	"
 	| pt |
 
 	pt := self readPoint.
 	pt ifNil: [ self error: 'a point expected following after M/m command'].
-	
-	self moveTo: pt.
-	
-	[ pt := self readPoint. pt isNotNil ] whileTrue: [ self lineTo: pt ]
 
+	self moveTo: pt.
+
+	[ pt := self readPoint. pt isNotNil ] whileTrue: [ self lineTo: pt ]
 ]
 
 { #category : #'builder commands' }
-ASPathConverter >> moveTo: aPoint [ 
+ASPathConverter >> moveTo: aPoint [
 
-	self addSegment 
+	self addSegment
 ]
 
 { #category : #'path commands' }
@@ -364,7 +355,7 @@ ASPathConverter >> q [
 ]
 
 { #category : #operations }
-ASPathConverter >> quadraticBezier [ 
+ASPathConverter >> quadraticBezier [
 
 
 "
@@ -372,23 +363,21 @@ Q/q (x1 y1 x y)+
 
 Draws a quadratic Bézier curve from the current point to (x,y) using (x1,y1) as the control point. Q (uppercase) indicates that absolute coordinates will follow; q (lowercase) indicates that relative coordinates will follow. Multiple sets of coordinates may be specified to draw a polybézier. At the end of the command, the new current point becomes the final (x,y) coordinate pair used in the polybézier."
 	| p1 p2 |
-	
+
 	p1 := self readPoint.
 	p2 := self readPoint.
-	
+
 	p2 ifNil: [ self error: 'Invalid path data: 2 points expected for quadratic bezier '].
-	
-	self curveVia: p1 to: p2. 
-	
-	[ 
+
+	self curveVia: p1 to: p2.
+
+	[
 		(p1 := self readPoint) ifNil: [ ^ self ].
 		p2 := self readPoint.
 
 		p2 ifNil: [ self error: 'Invalid path data: 2 points expected for quadratic bezier '].
-		self curveVia: p1 to: p2. 
-	] repeat.
-
-
+		self curveVia: p1 to: p2.
+	] repeat
 ]
 
 { #category : #operations }
@@ -398,11 +387,11 @@ ASPathConverter >> readPoint [
 	self skipBlanksAndComma.
 	pos := stream position.
 	x := self nextNumber ifNil: [ ^ nil ].
-	
+
 	self skipBlanksAndComma.
-	
+
 	y := self nextNumber ifNil: [ stream position: pos. ^ nil ].
-	
+
 	^ x @ y
 ]
 
@@ -415,36 +404,34 @@ S/s (x2 y2 x y)+
 cubic Bézier curve from the current point to (x,y). The first control point is assumed to be the reflection of the second control point on the previous command relative to the current point. (If there is no previous command or if the previous command was not an C, c, S or s, assume the first control point is coincident with the current point.) (x2,y2) is the second control point (i.e., the control point at the end of the curve). S (uppercase) indicates that absolute coordinates will follow; s (lowercase) indicates that relative coordinates will follow. Multiple sets of coordinates may be specified to draw a polybézier. At the end of the command, the new current point becomes the final (x,y) coordinate pair used in the polybézier.
 "
 	| p1 p2 |
-	
+
 	p1 := self readPoint.
 	p2 := self readPoint.
-	
+
 	p2 ifNil: [ self error: 'Invalid path data: 2 points expected for reflected cubic bezier '].
 
-	self reflectedCurveVia: p1 to: p2. 
-	
-	[ 
+	self reflectedCurveVia: p1 to: p2.
+
+	[
 		(p1 := self readPoint) ifNil: [ ^ self ].
 		p2 := self readPoint.
 
 		p2 ifNil: [ self error: 'Invalid path data: 2 points expected for reflected cubic bezier '].
-		self reflectedCurveVia: p1 to: p2. 
-	] repeat.
-
-
+		self reflectedCurveVia: p1 to: p2.
+	] repeat
 ]
 
 { #category : #'builder commands' }
-ASPathConverter >> reflectedCurveVia: aPoint to: aPoint2 [ 
+ASPathConverter >> reflectedCurveVia: aPoint to: aPoint2 [
 
 
-	self addSegment 
+	self addSegment
 ]
 
 { #category : #'builder commands' }
 ASPathConverter >> relative [
 	absolute := false.
-	self addSegment 
+	self addSegment
 ]
 
 { #category : #'path commands' }
@@ -454,7 +441,7 @@ ASPathConverter >> s [
 
 { #category : #operations }
 ASPathConverter >> smoothQuadraticBezier [
-	self notYetImplemented 
+	self notYetImplemented
 ]
 
 { #category : #'path commands' }
@@ -464,7 +451,7 @@ ASPathConverter >> t [
 
 { #category : #'path commands' }
 ASPathConverter >> v [
-	self relative; vLineTo 
+	self relative; vLineTo
 ]
 
 { #category : #operations }
@@ -475,22 +462,21 @@ V (absolute) v (relative)
 Draws a vertical line from the current point (cpx, cpy) to (cpx, y). V (uppercase) indicates that absolute coordinates will follow; v (lowercase) indicates that relative coordinates will follow. Multiple y values can be provided (although usually this doesn't make sense). At the end of the command, the new current point becomes (cpx, y) for the final value of y."
 
 	| y |
-	
+
 	self skipBlanks.
 	y := self nextNumber ifNil: [ ^ self error: 'number expected for horizontal line segment'   ].
-	
+
 	self vLineTo: y.
-	
+
 	[ self skipBlanks. y := self nextNumber. y isNotNil ] whileTrue: [
 		self vLineTo: y
-	].
-
+	]
 ]
 
 { #category : #'builder commands' }
 ASPathConverter >> vLineTo: aNumber [
-	
-	self addSegment 
+
+	self addSegment
 ]
 
 { #category : #'path commands' }
