@@ -9,15 +9,14 @@ ASPolyLine >> setShapeOn: aCanvas [
 	| path |
 
 	path := aCanvas createPath: [:builder |
-		builder 
+		builder
 			absolute;
-			moveTo: points first.		
+			moveTo: points first.
 
 		points allButFirstDo: [:pt | builder lineTo: pt ].
-		
+
 
 	].
-	
-	aCanvas setShape: path.
 
+	aCanvas setShape: path
 ]

@@ -15,42 +15,42 @@ Class {
 }
 
 { #category : #'to be done' }
-ASVGRoot >> baseProfile: aString [ 
+ASVGRoot >> baseProfile: aString [
 	self yourself
 ]
 
 { #category : #'to be done' }
-ASVGRoot >> contentScriptType: aString [ 
+ASVGRoot >> contentScriptType: aString [
 
 	"ignore"
 ]
 
 { #category : #'to be done' }
-ASVGRoot >> contentStyleType: aString [ 
+ASVGRoot >> contentStyleType: aString [
 
-	self yourself 
+	self yourself
 ]
 
 { #category : #initialize }
-ASVGRoot >> cssClasses [ 
-	
+ASVGRoot >> cssClasses [
+
 	^ cssClasses
 ]
 
 { #category : #accessing }
 ASVGRoot >> height [
 
-	^ height ifNil: [ 
-		viewBox 
-			ifNotNil: [ :aRectangle | 
-				ASLength new 
+	^ height ifNil: [
+		viewBox
+			ifNotNil: [ :aRectangle |
+				ASLength new
 					value: aRectangle height;
-					units: 'px' ] 
+					units: 'px' ]
 			ifNil: [ 0 ] ]
 ]
 
 { #category : #accessing }
-ASVGRoot >> height: aString [ 
+ASVGRoot >> height: aString [
 	height := ASLength fromString: aString
 ]
 
@@ -61,34 +61,34 @@ ASVGRoot >> inheritedAttributeAt: name [
 ]
 
 { #category : #initialize }
-ASVGRoot >> initialize [ 
+ASVGRoot >> initialize [
 	super initialize.
 	ids := Dictionary new.
-	
-	cssClasses := Dictionary new.
+
+	cssClasses := Dictionary new
 ]
 
 { #category : #'to be done' }
-ASVGRoot >> preserveAspectRatio: aString [ 
+ASVGRoot >> preserveAspectRatio: aString [
 
-	self yourself 
+	self yourself
 ]
 
 { #category : #rendering }
 ASVGRoot >> renderOn: aCanvas viewportExtent: extent [
 
 	viewBox ifNil: [ ^self renderOn: aCanvas ].
-	
+
 	aCanvas pathTransform restoreAfter: [
 		aCanvas pathTransform
 			translateX: viewBox origin x negated Y: viewBox origin y negated;
 			scaleX: (extent x / viewBox width) asFloat Y: (extent y / viewBox height) asFloat.
-		self renderOn: aCanvas.		
+		self renderOn: aCanvas.
 	]
 ]
 
 { #category : #internal }
-ASVGRoot >> resolveIds [ 
+ASVGRoot >> resolveIds [
 	^ self resolveIds: ids
 ]
 
@@ -101,24 +101,23 @@ ASVGRoot >> setId: anId for: object [
 { #category : #translate }
 ASVGRoot >> translate: node [
 	super translate: node.
-	self resolveIds.
-
+	self resolveIds
 ]
 
 { #category : #accessing }
-ASVGRoot >> version: aString [ 
+ASVGRoot >> version: aString [
 
-		self yourself 
+		self yourself
 ]
 
 { #category : #accessing }
-ASVGRoot >> viewBox: aString [ 
+ASVGRoot >> viewBox: aString [
 	"min-x min-y width height"
-	
+
 	| conv mx my w h |
-	
+
 	conv := ASConverter new stream: aString readStream.
-	
+
 	mx := conv skipBlanks nextNumber.
 	my := conv skipBlanks nextNumber.
 	w := conv skipBlanks nextNumber.
@@ -130,33 +129,32 @@ ASVGRoot >> viewBox: aString [
 { #category : #accessing }
 ASVGRoot >> width [
 
-	^ width ifNil: [ 
-		viewBox 
-			ifNotNil: [ :aRectangle | 
-				ASLength new 
+	^ width ifNil: [
+		viewBox
+			ifNotNil: [ :aRectangle |
+				ASLength new
 					value: aRectangle width;
-					units: 'px' ] 
+					units: 'px' ]
 			ifNil: [ 0 ] ]
 ]
 
 { #category : #accessing }
 ASVGRoot >> width: aString [
-	
+
 	width := ASLength fromString: aString
-
 ]
 
 { #category : #accessing }
-ASVGRoot >> x: aString [ 
-	self yourself 
+ASVGRoot >> x: aString [
+	self yourself
 ]
 
 { #category : #accessing }
-ASVGRoot >> y: aString [ 
-	self yourself 
+ASVGRoot >> y: aString [
+	self yourself
 ]
 
 { #category : #internal }
-ASVGRoot >> zoomAndPan: aString [ 
+ASVGRoot >> zoomAndPan: aString [
 	"self shouldBeImplemented."
 ]

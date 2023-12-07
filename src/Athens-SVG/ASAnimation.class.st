@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #accessing }
-ASAnimation >> duration [ 
+ASAnimation >> duration [
 	^ Time millisecondClockValue - started
 ]
 
@@ -31,14 +31,14 @@ ASAnimation >> finishAction: anObject [
 { #category : #accessing }
 ASAnimation >> start [
 
-	started := Time millisecondClockValue.
+	started := Time millisecondClockValue
 ]
 
 { #category : #accessing }
 ASAnimation >> step [
 
 	(stopCondition value: self )
-		ifTrue: [ finishAction value: self ] 
+		ifTrue: [ finishAction value: self ]
 		ifFalse: [ stepAction value: self  ]
 ]
 

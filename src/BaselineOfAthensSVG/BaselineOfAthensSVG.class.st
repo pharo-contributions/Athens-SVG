@@ -20,8 +20,8 @@ BaselineOfAthensSVG >> baseline: spec [
 		spec package: 'Athens-SVG-Support'.
 		spec package: 'Athens-SVG-Parsers'.
 		spec package: 'Athens-SVG'.
-		
+
 		spec group: 'PathConverter' with: #('Athens-SVG-PathConverter').
 		spec group: 'default' with: #('PathConverter' 'XMLParser' 'SmaCC' 'Athens-SVG-Support' 'Athens-SVG-Parsers' 'Athens-SVG').
-	].		
+	].
 ]

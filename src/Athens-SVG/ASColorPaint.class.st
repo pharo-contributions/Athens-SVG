@@ -16,21 +16,21 @@ ASColorPaint >> color: aColor [
 ASColorPaint >> fill: shape on: aCanvas [
 
 	aCanvas setPaint: (color alpha: (color alpha * shape fill_opacity)).
-	
+
 	aCanvas draw
 ]
 
 { #category : #'as yet unclassified' }
-ASColorPaint >> resolveIds: aDictionary [ 
-	^ self 
+ASColorPaint >> resolveIds: aDictionary [
+	^ self
 ]
 
 { #category : #'as yet unclassified' }
 ASColorPaint >> stroke: shape on: aCanvas [
 	| stroke |
 	stroke := aCanvas setStrokePaint: (color alpha: (color alpha * shape stroke_opacity)).
-	
+
 	stroke width: shape stroke_width.
-	
+
 	aCanvas draw
 ]

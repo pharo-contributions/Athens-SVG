@@ -8,7 +8,7 @@ Class {
 SVGCssScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(18 'fill' 8) #(18 'stroke' 9))
-		do: [ :each | 
+		do: [ :each |
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
 				put: each last ].
@@ -27,7 +27,6 @@ SVGCssScanner class >> visualWorksMetadata [
 		'namespace' 'SVGViewer'
 		'superclassNamespace' 'Refactory.SmaCC'
 	)
-
 ]
 
 { #category : #generated }

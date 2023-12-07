@@ -14,7 +14,7 @@ Class {
 ASConverter >> nextNumber [
 	"read the number from stream.
 	or answer nil if not successfull"
-	
+
 "
 <number> (real number value): The specification of real number values is different for property values than for XML attribute values.
 ❍ CSS2 [CSS2] states that a property value which is a <number> is specified in decimal notation (i.e., a <decimal-number>), which consists of either an <integer>, or an optional sign character followed by
@@ -27,43 +27,42 @@ It is recommended that higher precision floating point storage and computation b
 Conforming High-Quality SVG Viewers are required to use at least double-precision floating point (see [ICC32]) for intermediate calculations on certain numerical operations.
 Within the SVG DOM, a <number> is represented as a float or an SVGAnimatedNumber.
 "
-	
+
 	| result sign esign pos int frac exponent |
-	
+
 	esign := sign := 1.
 	pos := stream position.
-	
+
 	stream peek = $- ifTrue: [ sign := -1.  stream next ].
 
 	int := self readInteger.
-	
+
 	stream peek = $. ifTrue: [
 		stream next.
 		frac := self readFraction.
 	].
-	
+
 	(stream peek = $e or: [ stream peek = $E ]) ifTrue: [
 		stream next.
 		stream peek = $- ifTrue: [ esign := -1.  stream next ].
 
 		exponent := self readInteger * esign ].
-	
+
 	"failed"
 	(int isNil and: [ frac isNil ]) ifTrue: [ stream position: pos.  ^ nil ].
-	
+
 	int ifNil: [ int := 0 ].
 	frac ifNil: [ frac := 0 ].
 	exponent ifNil: [ exponent := 0 ].
-	
-	result :=  (int + frac * (10 raisedTo: exponent) * sign).
-	
-	result isFraction ifTrue: [  ^ result asFloat ] ifFalse: [ ^ result ]
 
+	result :=  (int + frac * (10 raisedTo: exponent) * sign).
+
+	result isFraction ifTrue: [  ^ result asFloat ] ifFalse: [ ^ result ]
 ]
 
 { #category : #accessing }
 ASConverter >> noFill [
-	^ ASNoFill soleInstance 
+	^ ASNoFill soleInstance
 ]
 
 { #category : #parsing }
@@ -83,8 +82,8 @@ read fraction, what is after the decimal point:
 "
 	| result mul |
 	(stream atEnd or: [ stream peek isDigit not ]) ifTrue: [ ^ nil ].
-	
-	mul := 1/10. 
+
+	mul := 1/10.
 	result := 0.
 	[ stream peek isNotNil and: [ stream peek isDigit ] ] whileTrue: [
 		result := result + ( (stream next digitValue) * mul ).
@@ -97,7 +96,7 @@ read fraction, what is after the decimal point:
 ASConverter >> readInteger [
 	| result |
 	(stream atEnd or: [ stream peek isDigit not ]) ifTrue: [ ^ nil ].
-	
+
 	result := 0.
 	[ stream peek isNotNil and: [ stream peek isDigit ] ] whileTrue: [
 		result := result * 10 + (stream next digitValue)
@@ -107,12 +106,12 @@ ASConverter >> readInteger [
 
 { #category : #operations }
 ASConverter >> skipBlanks [
-	[ stream atEnd not and: [ stream peek isSeparator ] ] whileTrue: [ stream next ].
+	[ stream atEnd not and: [ stream peek isSeparator ] ] whileTrue: [ stream next ]
 ]
 
 { #category : #operations }
 ASConverter >> skipBlanksAndComma [
-	[ stream atEnd not and: [ stream peek isSeparator or: [stream peek =$,]] ] whileTrue: [ stream next ].
+	[ stream atEnd not and: [ stream peek isSeparator or: [stream peek =$,]] ] whileTrue: [ stream next ]
 ]
 
 { #category : #accessing }

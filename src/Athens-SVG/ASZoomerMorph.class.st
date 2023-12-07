@@ -28,7 +28,7 @@ ASZoomerMorph >> animateZoomTo: zoomLevel [
 	currentAnimation stopCondition: [:anim | anim duration >= self maxAnimationDuration ].
 	currentAnimation stepAction:  [:anim | | duration |
 		duration := (anim duration min: self maxAnimationDuration) / self maxAnimationDuration asFloat.
-		
+
 		self setZoom:  animStartZoom * (1-duration) + (targetZoom * duration).
 
 		 ].
@@ -37,23 +37,22 @@ ASZoomerMorph >> animateZoomTo: zoomLevel [
 		self setZoom: targetZoom.
 		currentAnimation := nil.
 		].
-	
+
 	currentAnimation start.
 	self startStepping
 ]
 
 { #category : #'as yet unclassified' }
 ASZoomerMorph >> drawDropShadowOn: aCanvas [
-
 ]
 
 { #category : #'as yet unclassified' }
 ASZoomerMorph >> drawOn: aCanvas [
-	
+
 	svg ifNotNil: [
-		
-		surface drawDuring: [:canvas |  
-		
+
+		surface drawDuring: [:canvas |
+
 			surface clear.
 			canvas pathTransform restoreAfter: [
 				canvas pathTransform scaleBy: (currentZoom * svgZoom) asFloat.
@@ -61,7 +60,7 @@ ASZoomerMorph >> drawOn: aCanvas [
 			]
 		 ].
 		aCanvas translucentImage: surface asForm at: self innerBounds origin
-		
+
 	] ifNil: [
 		super drawOn: aCanvas.
 	]
@@ -71,9 +70,8 @@ ASZoomerMorph >> drawOn: aCanvas [
 ASZoomerMorph >> extent: pos [
 
 	super extent: pos.
-	
-	animCenter := self bounds center.
-	
+
+	animCenter := self bounds center
 ]
 
 { #category : #'as yet unclassified' }
@@ -89,21 +87,21 @@ ASZoomerMorph >> handlesMouseOver: evt [
 ]
 
 { #category : #'as yet unclassified' }
-ASZoomerMorph >> initialize [ 
+ASZoomerMorph >> initialize [
 
 
 	super initialize.
-	
+
 	currentZoom := 1.
-	basicExtent  := self extent.
+	basicExtent  := self extent
 ]
 
 { #category : #'as yet unclassified' }
 ASZoomerMorph >> justDroppedInto: aMorph event: anEvent [
 
 	super justDroppedInto: aMorph event: anEvent.
-	
-	animCenter := self bounds center.
+
+	animCenter := self bounds center
 ]
 
 { #category : #'as yet unclassified' }
@@ -113,7 +111,7 @@ ASZoomerMorph >> maxAnimationDuration [
 
 { #category : #'as yet unclassified' }
 ASZoomerMorph >> maxZoom [
-	
+
 	^ maxZoom ifNil: [ maxZoom := 2 ]
 ]
 
@@ -121,7 +119,6 @@ ASZoomerMorph >> maxZoom [
 ASZoomerMorph >> maxZoom: aValue [
 
 	maxZoom := aValue max: 1
-
 ]
 
 { #category : #'as yet unclassified' }
@@ -139,13 +136,12 @@ ASZoomerMorph >> mouseLeave: evt [
 ASZoomerMorph >> position: pos [
 
 	super position: pos.
-	
-	animCenter := self bounds center.
-	
+
+	animCenter := self bounds center
 ]
 
 { #category : #'as yet unclassified' }
-ASZoomerMorph >> screenDPI [ 
+ASZoomerMorph >> screenDPI [
 	^ 96 "just a guess "
 ]
 
@@ -154,11 +150,11 @@ ASZoomerMorph >> setZoom: aZoom [
 	|  newExtent oldCenter |
 	currentZoom := aZoom.
 	newExtent := basicExtent * aZoom.
-	
+
 	oldCenter := animCenter.
 	self bounds: (animCenter - (newExtent /2) extent: newExtent).
 	animCenter := oldCenter.
-	
+
 	self changed
 ]
 
@@ -184,11 +180,11 @@ ASZoomerMorph >> svg: anSVG [
 { #category : #'as yet unclassified' }
 ASZoomerMorph >> svg: anSVG zoom: anSvgZoom [
 	| w h |
-	
+
 	svg := anSVG.
 	svg isString ifTrue: [ svg :=  AthensSVGConverter fromFile: svg ].
 	svgExtent := self extent.
-	
+
 	svg width ifNotNil: [
 		w := svg width valueForDPI: self screenDPI.
 		h := svg height valueForDPI: self screenDPI.
@@ -202,7 +198,7 @@ ASZoomerMorph >> svg: anSVG zoom: anSvgZoom [
 	surface := AthensCairoSurface extent: (svgExtent * self maxZoom + (1@1)) asIntegerPoint.
 	basicExtent := svgExtent.
 	self extent: svgExtent.
-	currentZoom := 1.	
+	currentZoom := 1.
 	self changed
 ]
 

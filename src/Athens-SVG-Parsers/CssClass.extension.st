@@ -2,7 +2,7 @@ Extension { #name : #CssClass }
 
 { #category : #'*Athens-SVG-Parsers' }
 CssClass >> cssFromAttributes: aString [
-	"The expected aString looks something like this: 
+	"The expected aString looks something like this:
 		'{fill:#4d82b8}'
 	So we have to get rid of the curly braces."
 

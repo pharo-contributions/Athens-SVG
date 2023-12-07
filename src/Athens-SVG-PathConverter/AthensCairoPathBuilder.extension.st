@@ -1,8 +1,8 @@
 Extension { #name : #AthensCairoPathBuilder }
 
 { #category : #'*Athens-SVG-PathConverter' }
-AthensCairoPathBuilder >> arcDegreeStart: aStartAngle sweep: aSweepAngle centerX: anX y: aY radius: aRadius [ 
-	^self 
+AthensCairoPathBuilder >> arcDegreeStart: aStartAngle sweep: aSweepAngle centerX: anX y: aY radius: aRadius [
+	^self
 		arcRadianStart: aStartAngle degreesToRadians
 		sweep: aSweepAngle degreesToRadians
 		centerX: anX
@@ -11,31 +11,31 @@ AthensCairoPathBuilder >> arcDegreeStart: aStartAngle sweep: aSweepAngle centerX
 ]
 
 { #category : #'*Athens-SVG-PathConverter' }
-AthensCairoPathBuilder >> arcRadianStart: aStartAngle sweep: aSweepAngle centerX: anX y: aY radius: aRadius [ 
+AthensCairoPathBuilder >> arcRadianStart: aStartAngle sweep: aSweepAngle centerX: anX y: aY radius: aRadius [
 	| endAngle |
-	
+
 	endAngle := aStartAngle + aSweepAngle.
-	aSweepAngle positive 
-		ifTrue: 
+	aSweepAngle positive
+		ifTrue:
 			[ self arcCenterX: anX centerY: aY radius: aRadius startAngle: aStartAngle endAngle: endAngle ]
-		ifFalse: 
-			[ self arcNegativeCenterX: anX centerY: aY radius: aRadius startAngle: aStartAngle endAngle: endAngle ].
+		ifFalse:
+			[ self arcNegativeCenterX: anX centerY: aY radius: aRadius startAngle: aStartAngle endAngle: endAngle ]
 ]
 
 { #category : #'*Athens-SVG-PathConverter' }
 AthensCairoPathBuilder >> ellipticalArc3: radii xrot: xAxisRotation large: largeArcFlag sweep: sweepFlag to: theEndPoint [
 
 "	 self cwArcTo: pt angle: 45 degreesToRadians  "
-	
+
 	| rx ry x1 y1 x2 y2 dx2 dy2 phi cosAngle sinAngle arx ary coeff cx1 cy1 ux uy vx vy sign xPrime1 yPrime1 radical startAngle sweepAngle cx cy aPoint |
 	aPoint := lastControlPoint.
-	
+
 	rx := radii x.
 	ry := radii y.
-	
+
 	(rx - ry) abs < 1e-7 ifTrue: [
 		^self "self computeCircleArcAt: aPoint"].
-	
+
 	x1 := aPoint x.
 	y1 := aPoint y.
 	x2 := theEndPoint x.
@@ -86,32 +86,29 @@ AthensCairoPathBuilder >> ellipticalArc3: radii xrot: xAxisRotation large: large
 				arcCos * sign)
 				radiansToDegrees \\ 360.
 	(sweepAngle abs < 180 and: [largeArcFlag])
-		ifTrue: 
+		ifTrue:
 			[sweepAngle < 0
 				ifTrue: [sweepAngle := 360 + sweepAngle]
 				ifFalse: [sweepAngle := sweepAngle - 360]].
 	sweepFlag
 		ifTrue: [sweepAngle < 0 ifTrue: [sweepAngle := sweepAngle + 360]]
-		ifFalse: [sweepAngle > 0 ifTrue: [sweepAngle := sweepAngle - 360]].
-	
-		
-
+		ifFalse: [sweepAngle > 0 ifTrue: [sweepAngle := sweepAngle - 360]]
 ]
 
 { #category : #'*Athens-SVG-PathConverter' }
 AthensCairoPathBuilder >> ellipticalArc: radii xrot: xAxisRotation large: largeArcFlag sweep: sweepFlag to: theEndPoint [
 
 "	 self cwArcTo: pt angle: 45 degreesToRadians  "
-	
+
 	| rx ry x1 y1 x2 y2 dx2 dy2 phi cosAngle sinAngle arx ary coeff cx1 cy1 ux uy vx vy sign xPrime1 yPrime1 radical startAngle sweepAngle cx cy aPoint lFlag swFlag isRelative aCenter |
 	aPoint := 0@0.
-	
+
 	lFlag := false.
 	swFlag := false.
-	
+
 	rx := radii x.
 	ry := radii y.
-		
+
 	x1 := aPoint x.
 	y1 := aPoint y.
 	x2 := theEndPoint x.
@@ -163,24 +160,24 @@ AthensCairoPathBuilder >> ellipticalArc: radii xrot: xAxisRotation large: largeA
 				arcCos * sign)
 				radiansToDegrees \\ 360.
 	(sweepAngle abs < 180 and: [lFlag])
-		ifTrue: 
+		ifTrue:
 			[sweepAngle < 0
 				ifTrue: [sweepAngle := 360 + sweepAngle]
 				ifFalse: [sweepAngle := sweepAngle - 360]].
 	swFlag
 		ifTrue: [sweepAngle < 0 ifTrue: [sweepAngle := sweepAngle + 360]]
 		ifFalse: [sweepAngle > 0 ifTrue: [sweepAngle := sweepAngle - 360]].
-		
+
 	isRelative := false.
 	aCenter := isRelative ifTrue: [ endPoint + (cx@cy)] ifFalse: [cx@cy].
-	
+
 	self arcDegreeStart: startAngle sweep: sweepAngle centerX: aCenter x y: aCenter y radius: rx abs.
-	
+
 endPoint := self toAbsolute: theEndPoint.
 
-"self arcDegreeStart: startAngle sweep: sweepAngle centerX: cx y: cy radius: 1.0 
-"		
-"	self arcCenterX: xc centerY: yc radius: radius startAngle: angle1 endAngle: angle2  
+"self arcDegreeStart: startAngle sweep: sweepAngle centerX: cx y: cy radius: 1.0
+"
+"	self arcCenterX: xc centerY: yc radius: radius startAngle: angle1 endAngle: angle2
 "
 ]
 
@@ -188,20 +185,20 @@ endPoint := self toAbsolute: theEndPoint.
 AthensCairoPathBuilder >> ellipticalArc: radii xrot: xAxisRotation large: largeArcFlag sweep: sweepFlag to: theEndPoint relative: isRelative [
 
 "	 self cwArcTo: pt angle: 45 degreesToRadians  "
-	
+
 	| rx ry x1 y1 x2 y2 dx2 dy2 arx ary coeff cx1 cy1 ux uy vx vy sign xPrime1 yPrime1 radical  startAngle sweepAngle cx cy aPoint lFlag swFlag aCenter uySign |
-	
-	
+
+
 	aPoint := isRelative
 				ifTrue: [0.0 @ 0.0]
 				ifFalse: [endPoint].
-	
+
 	lFlag := false.
 	swFlag := sweepFlag = 1.0.
-	
+
 	rx := radii x.
 	ry := radii y.
-		
+
 	x1 := aPoint x.
 	y1 := aPoint y.
 	x2 := theEndPoint x.
@@ -213,7 +210,7 @@ AthensCairoPathBuilder >> ellipticalArc: radii xrot: xAxisRotation large: largeA
 	sinAngle := phi sin.
 	xPrime1 := cosAngle * dx2 + (sinAngle * dy2).
 	yPrime1 := cosAngle * dy2 - (sinAngle * dx2)."
-	
+
 	xPrime1 := dx2.
 	yPrime1 := dy2.
 
@@ -256,22 +253,22 @@ AthensCairoPathBuilder >> ellipticalArc: radii xrot: xAxisRotation large: largeA
 				arcCos * sign)
 				radiansToDegrees \\ 360.
 	(sweepAngle abs < 180 and: [lFlag])
-		ifTrue: 
+		ifTrue:
 			[sweepAngle < 0
 				ifTrue: [sweepAngle := 360 + sweepAngle]
 				ifFalse: [sweepAngle := sweepAngle - 360]].
 	swFlag
 		ifTrue: [sweepAngle < 0 ifTrue: [sweepAngle := sweepAngle + 360]]
 		ifFalse: [sweepAngle > 0 ifTrue: [sweepAngle := sweepAngle - 360]].
-				
+
 	aCenter := isRelative ifTrue: [ endPoint + (cx@cy)] ifFalse: [cx@cy].
-	
+
 	self arcDegreeStart: startAngle sweep: sweepAngle centerX: aCenter x y: aCenter y radius: rx abs.
-	
+
 endPoint := self toAbsolute: theEndPoint.
 
-"self arcDegreeStart: startAngle sweep: sweepAngle centerX: cx y: cy radius: 1.0 
-"		
-"	self arcCenterX: xc centerY: yc radius: radius startAngle: angle1 endAngle: angle2  
+"self arcDegreeStart: startAngle sweep: sweepAngle centerX: cx y: cy radius: 1.0
+"
+"	self arcCenterX: xc centerY: yc radius: radius startAngle: angle1 endAngle: angle2
 "
 ]

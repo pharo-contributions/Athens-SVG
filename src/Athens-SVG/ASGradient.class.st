@@ -10,17 +10,16 @@ Class {
 }
 
 { #category : #operations }
-ASGradient >> colorRampWithOpacity: aFloat [ 
-	
+ASGradient >> colorRampWithOpacity: aFloat [
+
 	(stops isNil or: [stops  isEmpty ]) ifTrue: [
 		self xlink_href ifNotNil: [:link |
 			^ link colorRampWithOpacity: aFloat
 			].
 		^ #().
 		].
-	
-	^ stops collect: [:ea | ea asRampColorWithOpacity: aFloat]
 
+	^ stops collect: [:ea | ea asRampColorWithOpacity: aFloat]
 ]
 
 { #category : #accessing }
@@ -30,15 +29,15 @@ ASGradient >> gradientTransform: aString [
 ]
 
 { #category : #accessing }
-ASGradient >> gradientUnits: aString [ 
+ASGradient >> gradientUnits: aString [
 
 	gradientUnits := aString
 ]
 
 { #category : #initialize }
-ASGradient >> initialize [ 
+ASGradient >> initialize [
 	super initialize.
-	gradientTransform := AthensAffineTransform new.
+	gradientTransform := AthensAffineTransform new
 ]
 
 { #category : #rendering }
@@ -47,7 +46,6 @@ ASGradient >> renderOn: aCanvas [
 ]
 
 { #category : #operations }
-ASGradient >> spreadMethod: aByteString [ 
+ASGradient >> spreadMethod: aByteString [
 	"not yet"
-
 ]

@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-ASEllipse >> cx: aString [ 
+ASEllipse >> cx: aString [
 "cx = <coordinate>
 The x-axis coordinate of the center of the circle.
 If the attribute is not specified, the effect is as if a value of '0'  were specified."
@@ -20,7 +20,7 @@ If the attribute is not specified, the effect is as if a value of '0'  were spec
 ]
 
 { #category : #'as yet unclassified' }
-ASEllipse >> cy: aString [ 
+ASEllipse >> cy: aString [
 
 "cy = <coordinate>
 The y-axis coordinate of the center of the circle.
@@ -30,34 +30,29 @@ If the attribute is not specified, the effect is as if a value of 0 were specifi
 ]
 
 { #category : #'as yet unclassified' }
-ASEllipse >> rx: aString [ 
+ASEllipse >> rx: aString [
 
-	rx := self translateLength: aString.
-	
-
+	rx := self translateLength: aString
 ]
 
 { #category : #'as yet unclassified' }
-ASEllipse >> ry: aString [ 
+ASEllipse >> ry: aString [
 
-	ry := self translateLength: aString.
-	
-
+	ry := self translateLength: aString
 ]
 
 { #category : #'as yet unclassified' }
 ASEllipse >> setShapeOn: aCanvas [
 	| circle |
-	
+
 
 	circle := aCanvas createPath: [:builder |
-		builder 
+		builder
 			absolute;
 			moveTo: (cx - rx @ cy);
 			cwArcTo: (cx + rx @ cy )  angle: 180 degreesToRadians;
 			cwArcTo: (cx - rx @ cy)  angle: 180 degreesToRadians
 		].
 
-	aCanvas setShape: circle.
-
+	aCanvas setShape: circle
 ]

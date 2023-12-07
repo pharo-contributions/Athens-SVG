@@ -73,7 +73,6 @@ SVGCssParser class >> visualWorksMetadata [
 		'namespace' 'SVGViewer'
 		'superclassNamespace' 'Refactory.SmaCC'
 	)
-
 ]
 
 { #category : #accessing }
@@ -110,7 +109,7 @@ SVGCssParser >> colorAttribute: aNode [
 	aString = 'none' ifTrue: [
 		^Color transparent].
 	aString := (aString copyFrom: 2 to: aString size) asUppercase.
-	aString size = 3 ifTrue: [^self colorAttribute3: aString]. 
+	aString size = 3 ifTrue: [^self colorAttribute3: aString].
 	anArray := ByteArray fromHexString: aString.
 	^Color
 		r: anArray first / 255.0
@@ -211,29 +210,29 @@ SVGCssParser >> reduceActionForStrokeWidth1: nodes [
 { #category : #generated }
 SVGCssParser >> reduceTable [
 ^#(
-	#(20 0 #reduceFor:) 
-	#(30 0 #reduceFor:) 
-	#(33 1 #reduceFor:) 
-	#(20 1 #reduceFor:) 
-	#(36 3 #reduceFor:) 
-	#(21 1 #reduceFor:) 
-	#(27 1 #reduceFor:) 
-	#(30 1 #reduceFor:) 
-	#(33 2 #reduceFor:) 
-	#(31 3 #reduceActionForStartClass1:) 
-	#(29 2 #reduceActionForFill1:) 
-	#(22 2 #reduceActionForStroke1:) 
-	#(19 2 #reduceActionForStrokeLineCap1:) 
-	#(35 2 #reduceActionForStrokeWidth1:) 
-	#(39 2 #reduceActionForStrokeLineJoin1:) 
-	#(28 2 #reduceFor:) 
-	#(23 2 #reduceFor:) 
-	#(24 2 #reduceActionForFillOpacity1:) 
-	#(25 2 #reduceFor:) 
-	#(26 2 #reduceActionForAnyRule1:) 
-	#(32 3 #reduceFor:) 
+	#(20 0 #reduceFor:)
+	#(30 0 #reduceFor:)
+	#(33 1 #reduceFor:)
+	#(20 1 #reduceFor:)
+	#(36 3 #reduceFor:)
+	#(21 1 #reduceFor:)
+	#(27 1 #reduceFor:)
+	#(30 1 #reduceFor:)
+	#(33 2 #reduceFor:)
+	#(31 3 #reduceActionForStartClass1:)
+	#(29 2 #reduceActionForFill1:)
+	#(22 2 #reduceActionForStroke1:)
+	#(19 2 #reduceActionForStrokeLineCap1:)
+	#(35 2 #reduceActionForStrokeWidth1:)
+	#(39 2 #reduceActionForStrokeLineJoin1:)
+	#(28 2 #reduceFor:)
+	#(23 2 #reduceFor:)
+	#(24 2 #reduceActionForFillOpacity1:)
+	#(25 2 #reduceFor:)
+	#(26 2 #reduceActionForAnyRule1:)
+	#(32 3 #reduceFor:)
 	#(27 3 #reduceFor:)
-	).
+	)
 ]
 
 { #category : #operations }
@@ -253,53 +252,53 @@ SVGCssParser >> symbolNames [
 { #category : #generated }
 SVGCssParser >> transitionTable [
 ^#(
-#[1 0 9 0 1 0 13 0 36] 
-#[1 0 6 0 2 0 17 0 6 0 21 0 20 0 25 0 31 0 29 0 32 0 33 0 33] 
-#[0 0 0 0 37] 
-#[0 0 37 0 18] 
-#[0 0 41 0 2] 
-#[1 0 10 0 3 0 45 0 8 0 49 0 9 0 53 0 10 0 57 0 11 0 61 0 12 0 65 0 13 0 69 0 14 0 73 0 15 0 77 0 16 0 81 0 18 0 85 0 19 0 89 0 21 0 93 0 22 0 97 0 23 0 101 0 24 0 105 0 25 0 109 0 26 0 113 0 27 0 117 0 28 0 121 0 29 0 125 0 30 0 129 0 35 0 133 0 39] 
-#[1 0 14 0 2 0 17 0 6 0 25 0 31 0 29 0 32 0 137 0 33] 
-#[0 0 18 0 2] 
-#[0 0 141 0 5] 
-#[0 0 22 0 37] 
-#[0 0 145 0 17] 
-#[0 0 149 0 17] 
-#[0 0 153 0 17] 
-#[0 0 157 0 17] 
-#[0 0 161 0 17] 
-#[0 0 165 0 17] 
-#[0 0 169 0 17] 
-#[0 0 173 0 17] 
-#[0 0 177 0 17] 
-#[0 0 181 0 17] 
-#[0 0 26 0 3 0 4] 
-#[1 0 30 0 3 0 185 0 4] 
-#[0 0 26 0 3 0 4] 
-#[0 0 26 0 3 0 4] 
-#[0 0 26 0 3 0 4] 
-#[0 0 26 0 3 0 4] 
-#[0 0 26 0 3 0 4] 
-#[0 0 34 0 3] 
-#[0 0 26 0 3 0 4] 
-#[0 0 26 0 3 0 4] 
-#[0 0 189 0 3] 
-#[0 0 26 0 3 0 4] 
-#[0 0 26 0 3 0 4] 
-#[0 0 38 0 2] 
-#[0 0 42 0 3 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 15 0 16 0 18] 
-#[0 0 46 0 3 0 4] 
-#[0 0 50 0 3 0 4] 
-#[0 0 54 0 3 0 4] 
-#[0 0 58 0 3 0 4] 
-#[0 0 62 0 3 0 4] 
-#[0 0 66 0 3 0 4] 
-#[0 0 70 0 3 0 4] 
-#[0 0 74 0 3 0 4] 
-#[0 0 78 0 3 0 4] 
-#[0 0 82 0 3 0 4] 
-#[1 0 10 0 3 0 45 0 8 0 49 0 9 0 53 0 10 0 57 0 11 0 61 0 12 0 65 0 13 0 69 0 14 0 73 0 15 0 77 0 16 0 81 0 18 0 85 0 19 0 89 0 21 0 93 0 22 0 97 0 23 0 101 0 24 0 105 0 25 0 109 0 26 0 113 0 27 0 117 0 28 0 121 0 29 0 193 0 30 0 129 0 35 0 133 0 39] 
-#[0 0 86 0 2 0 6] 
+#[1 0 9 0 1 0 13 0 36]
+#[1 0 6 0 2 0 17 0 6 0 21 0 20 0 25 0 31 0 29 0 32 0 33 0 33]
+#[0 0 0 0 37]
+#[0 0 37 0 18]
+#[0 0 41 0 2]
+#[1 0 10 0 3 0 45 0 8 0 49 0 9 0 53 0 10 0 57 0 11 0 61 0 12 0 65 0 13 0 69 0 14 0 73 0 15 0 77 0 16 0 81 0 18 0 85 0 19 0 89 0 21 0 93 0 22 0 97 0 23 0 101 0 24 0 105 0 25 0 109 0 26 0 113 0 27 0 117 0 28 0 121 0 29 0 125 0 30 0 129 0 35 0 133 0 39]
+#[1 0 14 0 2 0 17 0 6 0 25 0 31 0 29 0 32 0 137 0 33]
+#[0 0 18 0 2]
+#[0 0 141 0 5]
+#[0 0 22 0 37]
+#[0 0 145 0 17]
+#[0 0 149 0 17]
+#[0 0 153 0 17]
+#[0 0 157 0 17]
+#[0 0 161 0 17]
+#[0 0 165 0 17]
+#[0 0 169 0 17]
+#[0 0 173 0 17]
+#[0 0 177 0 17]
+#[0 0 181 0 17]
+#[0 0 26 0 3 0 4]
+#[1 0 30 0 3 0 185 0 4]
+#[0 0 26 0 3 0 4]
+#[0 0 26 0 3 0 4]
+#[0 0 26 0 3 0 4]
+#[0 0 26 0 3 0 4]
+#[0 0 26 0 3 0 4]
+#[0 0 34 0 3]
+#[0 0 26 0 3 0 4]
+#[0 0 26 0 3 0 4]
+#[0 0 189 0 3]
+#[0 0 26 0 3 0 4]
+#[0 0 26 0 3 0 4]
+#[0 0 38 0 2]
+#[0 0 42 0 3 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 15 0 16 0 18]
+#[0 0 46 0 3 0 4]
+#[0 0 50 0 3 0 4]
+#[0 0 54 0 3 0 4]
+#[0 0 58 0 3 0 4]
+#[0 0 62 0 3 0 4]
+#[0 0 66 0 3 0 4]
+#[0 0 70 0 3 0 4]
+#[0 0 74 0 3 0 4]
+#[0 0 78 0 3 0 4]
+#[0 0 82 0 3 0 4]
+#[1 0 10 0 3 0 45 0 8 0 49 0 9 0 53 0 10 0 57 0 11 0 61 0 12 0 65 0 13 0 69 0 14 0 73 0 15 0 77 0 16 0 81 0 18 0 85 0 19 0 89 0 21 0 93 0 22 0 97 0 23 0 101 0 24 0 105 0 25 0 109 0 26 0 113 0 27 0 117 0 28 0 121 0 29 0 193 0 30 0 129 0 35 0 133 0 39]
+#[0 0 86 0 2 0 6]
 #[0 0 90 0 3]
-	).
+	)
 ]

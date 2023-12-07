@@ -28,7 +28,7 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-ASRect >> height: aString [ 
+ASRect >> height: aString [
 
 	height := self translateNumber: aString
 ]
@@ -36,18 +36,18 @@ ASRect >> height: aString [
 { #category : #'as yet unclassified' }
 ASRect >> initialize [
 	super initialize.
-	
-	x := y := rx := ry := 0.
+
+	x := y := rx := ry := 0
 ]
 
 { #category : #'as yet unclassified' }
-ASRect >> rx: aString [ 
+ASRect >> rx: aString [
 
 	rx := self translateNumber: aString
 ]
 
 { #category : #'as yet unclassified' }
-ASRect >> ry: aString [ 
+ASRect >> ry: aString [
 
 	ry := self translateNumber: aString
 ]
@@ -60,19 +60,19 @@ ASRect >> setShapeOn: aCanvas [
 ]
 
 { #category : #'as yet unclassified' }
-ASRect >> width: aString [ 
+ASRect >> width: aString [
 
 	width := self translateNumber: aString
 ]
 
 { #category : #'as yet unclassified' }
-ASRect >> x: aString [ 
+ASRect >> x: aString [
 
 	x := self translateNumber: aString
 ]
 
 { #category : #'as yet unclassified' }
-ASRect >> y: aString [ 
+ASRect >> y: aString [
 
 	y := self translateNumber: aString
 ]

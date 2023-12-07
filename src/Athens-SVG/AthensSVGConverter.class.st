@@ -24,7 +24,7 @@ AthensSVGConverter class >> fromURL: anUrl [
 { #category : #'as yet unclassified' }
 AthensSVGConverter >> g [
 	"group"
-	
+
 	node attributes
 ]
 
@@ -33,11 +33,10 @@ AthensSVGConverter >> importXMLDocument: doc [
 
 	| root |
 	root := doc nodes elements.
-	
+
 	((root size > 1) or: [ root first name ~= 'svg'])  ifTrue: [ self error: 'A root svg element expected' ].
 
-	^ ASVGRoot new translate: root first.
-
+	^ ASVGRoot new translate: root first
 ]
 
 { #category : #'as yet unclassified' }
@@ -45,7 +44,5 @@ AthensSVGConverter >> visitNode: aNode [
 	| oldNode |
 	oldNode := node.
 	node := aNode.
-	self perform: aNode name asSymbol.
-
-	
+	self perform: aNode name asSymbol
 ]

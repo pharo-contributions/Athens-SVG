@@ -26,14 +26,13 @@ ASLink >> isId [
 ]
 
 { #category : #'as yet unclassified' }
-ASLink >> resolveIds: dict [ 
-	
+ASLink >> resolveIds: dict [
+
 	self isId ifTrue: [
 		^ dict at: id ifAbsent: [ self error: 'unknown id: ', id ]
 		].
-	
-	self error: 'cannot resolve url: ' , url
 
+	self error: 'cannot resolve url: ' , url
 ]
 
 { #category : #accessing }
@@ -44,7 +43,7 @@ ASLink >> url [
 { #category : #accessing }
 ASLink >> url: aString [
 	url := aString.
-	
+
 	isId := url first = $#.
 	isId ifTrue: [ id := url allButFirst ]
 ]

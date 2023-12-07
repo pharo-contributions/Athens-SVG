@@ -28,13 +28,13 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-ASElement class >> convertXML: aXMLElement [ 
+ASElement class >> convertXML: aXMLElement [
 	^ self new convertXML: aXMLElement
 ]
 
 { #category : #'as yet unclassified' }
 ASElement class >> initialize [
-	EmptyDict := IdentityDictionary new.
+	EmptyDict := IdentityDictionary new
 ]
 
 { #category : #'as yet unclassified' }
@@ -54,20 +54,20 @@ ASElement class >> translateNode: xmlNode parent: aParent [
 { #category : #'attribute management' }
 ASElement >> applyAttributes: svgAttributes [
 
-	svgAttributes fill ifNotNil: [ 
+	svgAttributes fill ifNotNil: [
 		self fill: (svgAttributes fill) ].
 
-	svgAttributes stroke ifNotNil: [ 
+	svgAttributes stroke ifNotNil: [
 		self stroke: (svgAttributes stroke) ].
 
-	svgAttributes fillOpacity ifNotNil: [ 
+	svgAttributes fillOpacity ifNotNil: [
 		self fill_opacity: (svgAttributes fillOpacity) ].
 
-	svgAttributes fillOpacity ifNotNil: [ 
+	svgAttributes fillOpacity ifNotNil: [
 		self stroke: (svgAttributes stroke) ].
 
-	svgAttributes fillRule ifNotNil: [ 
-		self fill_rule: (svgAttributes fillRule) ].
+	svgAttributes fillRule ifNotNil: [
+		self fill_rule: (svgAttributes fillRule) ]
 ]
 
 { #category : #'attribute management' }
@@ -88,30 +88,30 @@ ASElement >> attributeSetter: aString [
 	x =>> x:"
 	| sel |
 	sel := aString collect: [ :c | ('-:' includes: c) ifTrue: [ $_] ifFalse: [ c ]].
-	^ (sel copyWith: $:) asSymbol 
+	^ (sel copyWith: $:) asSymbol
 ]
 
 { #category : #attributes }
 ASElement >> class: anObject [
 
 	| classNames existingClasses mergedAttributes |
-	
+
 	classNames := anObject substrings.
 	self attributeAt: #class put: classNames.
 
 	existingClasses := classNames collect: [ :className |
 		self root cssClasses at: className ifPresent: [ :class | class ]] thenSelect: #isNotNil.
-	
+
 	existingClasses ifEmpty: [ ^ self ].
-	
+
 	mergedAttributes := existingClasses allButFirst inject: existingClasses first attributes into: [ :final :each   | final mergeWith: each attributes ].
-	
-	self applyAttributes: mergedAttributes.
+
+	self applyAttributes: mergedAttributes
 ]
 
 { #category : #attributes }
-ASElement >> color: aByteString [ 
-	self attributeAt: #color put: aByteString 
+ASElement >> color: aByteString [
+	self attributeAt: #color put: aByteString
 ]
 
 { #category : #'attribute management' }
@@ -121,7 +121,7 @@ ASElement >> defaultAttributeAt: aName [
 
 { #category : #attributes }
 ASElement >> display [
-	^ self attributeAt: #display 
+	^ self attributeAt: #display
 ]
 
 { #category : #attributes }
@@ -145,7 +145,7 @@ ASElement >> fill_opacity [
 ]
 
 { #category : #attributes }
-ASElement >> fill_opacity: aString [ 
+ASElement >> fill_opacity: aString [
 	self attributeAt: #fill_opacity  put: (self translateNumber: aString)
 ]
 
@@ -155,13 +155,13 @@ ASElement >> fill_rule: aString [
 ]
 
 { #category : #attributes }
-ASElement >> filter: aString [ 
+ASElement >> filter: aString [
 	"<uri> | none | inherit"
 	self attributeAt: #filter put: aString
 ]
 
 { #category : #attributes }
-ASElement >> font_size: aString [ 
+ASElement >> font_size: aString [
 	self attributeAt: #font_size put: aString
 ]
 
@@ -171,15 +171,14 @@ ASElement >> id [
 ]
 
 { #category : #accessing }
-ASElement >> id: aString [ 
+ASElement >> id: aString [
 	id := aString.
-	self registerId.
+	self registerId
 ]
 
 { #category : #'attribute management' }
 ASElement >> ignoredAttribute [
 	"just a stub to indicate an ignored attribute"
-
 ]
 
 { #category : #'attribute management' }
@@ -198,31 +197,29 @@ ASElement >> inheritedAttributeAt: name ifAbsent: aBlock [
 ]
 
 { #category : #initialize }
-ASElement >> initialize [ 
+ASElement >> initialize [
 
-	attributes := EmptyDict.
-
-
+	attributes := EmptyDict
 ]
 
 { #category : #attributes }
-ASElement >> marker: aString [ 
+ASElement >> marker: aString [
 	self attributeAt: #marker put: aString
 ]
 
 { #category : #attributes }
-ASElement >> marker_mid: aString [ 
+ASElement >> marker_mid: aString [
 	self attributeAt: #marker_mid put: aString
 ]
 
 { #category : #attributes }
-ASElement >> marker_start: aByteString [ 
-	self attributeAt: #marker_start put: aByteString 
+ASElement >> marker_start: aByteString [
+	self attributeAt: #marker_start put: aByteString
 ]
 
 { #category : #accessing }
 ASElement >> noFill [
-	^ ASNoFill soleInstance 
+	^ ASNoFill soleInstance
 ]
 
 { #category : #attributes }
@@ -231,14 +228,13 @@ ASElement >> opacity [
 ]
 
 { #category : #attributes }
-ASElement >> opacity: aString [ 
+ASElement >> opacity: aString [
 	self attributeAt: #opacity put: (self translateNumber: aString)
 ]
 
 { #category : #accessing }
 ASElement >> parent [
 	^ parent
-
 ]
 
 { #category : #accessing }
@@ -257,9 +253,9 @@ ASElement >> renderOn: aCanvas [
 	"render on Athens canvas"
 
 	self transform
-		ifNotNil: [ :tr | 
+		ifNotNil: [ :tr |
 			aCanvas pathTransform
-				restoreAfter: [ 
+				restoreAfter: [
 					aCanvas pathTransform multiplyBy: tr.
 					self renderShapeOn: aCanvas ] ]
 		ifNil: [ self renderShapeOn: aCanvas ]
@@ -267,7 +263,6 @@ ASElement >> renderOn: aCanvas [
 
 { #category : #rendering }
 ASElement >> renderShapeOn: aCanvas [
-
 ]
 
 { #category : #internal }
@@ -285,7 +280,7 @@ ASElement >> resolveIds: idDict [
 
 { #category : #internal }
 ASElement >> resolveMyIds: idDict [
-	#(#fill #stroke #xlink_href) 
+	#(#fill #stroke #xlink_href)
 		do: [ :each | self resolveIdForAttribute: each dict: idDict ]
 ]
 
@@ -301,7 +296,7 @@ ASElement >> stroke [
 ]
 
 { #category : #attributes }
-ASElement >> stroke: anObject [ 
+ASElement >> stroke: anObject [
 	self attributeAt: #stroke put: (ASFillConverter new translate: anObject )
 ]
 
@@ -311,7 +306,7 @@ ASElement >> stroke_dasharray [
 ]
 
 { #category : #attributes }
-ASElement >> stroke_dasharray: aString [ 
+ASElement >> stroke_dasharray: aString [
 	self attributeAt: #stroke_dasharray put: aString
 ]
 
@@ -321,7 +316,7 @@ ASElement >> stroke_dashoffset [
 ]
 
 { #category : #attributes }
-ASElement >> stroke_dashoffset: aString [ 
+ASElement >> stroke_dashoffset: aString [
 	self attributeAt: #stroke_dashoffset put: (self translateLength: aString)
 ]
 
@@ -331,7 +326,7 @@ ASElement >> stroke_linecap [
 ]
 
 { #category : #attributes }
-ASElement >> stroke_linecap: aString [ 
+ASElement >> stroke_linecap: aString [
 	self attributeAt: #stroke_linecap put: aString
 ]
 
@@ -341,7 +336,7 @@ ASElement >> stroke_linejoin [
 ]
 
 { #category : #attributes }
-ASElement >> stroke_linejoin: aString [ 
+ASElement >> stroke_linejoin: aString [
 	self attributeAt: #stroke_linejoin put: aString
 ]
 
@@ -353,7 +348,6 @@ ASElement >> stroke_miterlimit [
 { #category : #attributes }
 ASElement >> stroke_miterlimit: aString [
 	self attributeAt: #stroke_miterlimit put: (self translateNumber: aString)
-
 ]
 
 { #category : #attributes }
@@ -362,7 +356,7 @@ ASElement >> stroke_opacity [
 ]
 
 { #category : #attributes }
-ASElement >> stroke_opacity: aString [ 
+ASElement >> stroke_opacity: aString [
 	self attributeAt: #stroke_opacity  put: (self translateNumber: aString)
 ]
 
@@ -372,15 +366,15 @@ ASElement >> stroke_width [
 ]
 
 { #category : #attributes }
-ASElement >> stroke_width: aString [ 
+ASElement >> stroke_width: aString [
 	self attributeAt: #stroke_width  put: (self translateNumber: aString)
 ]
 
 { #category : #operations }
-ASElement >> style: aString [ 
+ASElement >> style: aString [
 	| values |
 	values := aString substrings: ';'.
-	
+
 	values do: [:keyval | | key val setter |
 		key := (keyval copyUpTo: $:) trimBoth.
 		val := (keyval copyAfter: $:) trimBoth.
@@ -388,7 +382,6 @@ ASElement >> style: aString [
 		(self respondsTo: setter) ifTrue: [ self perform: setter with: val ]
 		ifFalse: [ self attributeAt: setter allButLast asSymbol  put: val ]
 		]
-
 ]
 
 { #category : #operations }
@@ -405,12 +398,11 @@ ASElement >> transform: aString [
 
 { #category : #translate }
 ASElement >> translate: xmlNode [
-	self translateAttributes: xmlNode attributes.
-
+	self translateAttributes: xmlNode attributes
 ]
 
 { #category : #translate }
-ASElement >> translate: aXMLElement parent: node [ 
+ASElement >> translate: aXMLElement parent: node [
 	parent := node.
 	^ self translate: aXMLElement
 ]
@@ -427,27 +419,26 @@ ASElement >> translateAttributes: attrs [
 ]
 
 { #category : #translate }
-ASElement >> translateColor: aString [ 
+ASElement >> translateColor: aString [
 	"right now we do like that"
 	^ Color fromString: aString
 ]
 
 { #category : #translate }
-ASElement >> translateLength: aString [ 
+ASElement >> translateLength: aString [
 
 	^ self translateNumber: aString
 ]
 
 { #category : #translate }
-ASElement >> translateNumber: aString [ 
+ASElement >> translateNumber: aString [
 
-	^ (ASConverter new stream: aString readStream ) nextNumber 
-
+	^ (ASConverter new stream: aString readStream ) nextNumber
 ]
 
 { #category : #attributes }
-ASElement >> xlink_actuate: aString [ 
-	self ignoredAttribute 
+ASElement >> xlink_actuate: aString [
+	self ignoredAttribute
 ]
 
 { #category : #attributes }
@@ -456,17 +447,17 @@ ASElement >> xlink_href [
 ]
 
 { #category : #attributes }
-ASElement >> xlink_href: aString [ 
+ASElement >> xlink_href: aString [
 	self attributeAt: #xlink_href put: (ASLink url: aString)
 ]
 
 { #category : #attributes }
-ASElement >> xlink_show: aByteString [ 
-	self ignoredAttribute 
+ASElement >> xlink_show: aByteString [
+	self ignoredAttribute
 ]
 
 { #category : #attributes }
-ASElement >> xlink_type: aString [ 
+ASElement >> xlink_type: aString [
 
 	self ignoredAttribute
 ]

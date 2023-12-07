@@ -16,7 +16,6 @@ SVGNumberListScanner class >> visualWorksMetadata [
 		'namespace' 'SVGViewer'
 		'superclassNamespace' 'Refactory.SmaCC'
 	)
-
 ]
 
 { #category : #generated }
