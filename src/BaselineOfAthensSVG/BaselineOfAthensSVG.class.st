@@ -36,7 +36,7 @@ BaselineOfAthensSVG >> baseline: spec [
 		
 		"Groups (standard)"
 		spec
-			group: 'all' with: #( 'PathConverter' 'Support' 'Parsers' 'Core' );
+			group: 'all' with: #( 'PathConverter' 'Support' 'Parsers' 'Core' 'Tests');
 			group: 'default' with: #( 'all' ) ]
 ]
 
