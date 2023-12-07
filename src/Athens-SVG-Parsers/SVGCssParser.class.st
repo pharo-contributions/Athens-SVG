@@ -5,7 +5,7 @@ Class {
 		'cssClasses',
 		'cssClass'
 	],
-	#category : #'Athens-SVG-Parsers-SmaCC Generated Scanner Parser'
+	#category : #'Athens-SVG-Parsers-SmaCC Generated Parser'
 }
 
 { #category : #'generated-accessing' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #SVGStyleScanner,
 	#superclass : #SmaCCScanner,
-	#category : #'Athens-SVG-Parsers'
+	#category : #'Athens-SVG-Parsers-SmaCC Generated Scanner'
 }
 
 { #category : #'generated-initialization' }
