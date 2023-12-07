@@ -4,6 +4,12 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
+{ #category : #testing }
+ASShape class >> isAbstract [
+
+	^ self == ASShape
+]
+
 { #category : #'as yet unclassified' }
 ASShape >> renderShapeOn: aCanvas [
 

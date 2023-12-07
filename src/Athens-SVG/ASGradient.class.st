@@ -9,6 +9,12 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
+{ #category : #testing }
+ASGradient class >> isAbstract [
+
+	^ self == ASGradient
+]
+
 { #category : #operations }
 ASGradient >> colorRampWithOpacity: aFloat [
 
