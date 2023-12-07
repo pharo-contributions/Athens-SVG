@@ -20,7 +20,7 @@ Class {
 		'path',
 		'absolute'
 	],
-	#category : #'Athens-SVG-PathConverter'
+	#category : #'Athens-SVG-PathConverter-Converter'
 }
 
 { #category : #'path commands' }
