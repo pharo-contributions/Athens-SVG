@@ -53,7 +53,7 @@ Class {
 		'document',
 		'domainAttributes'
 	],
-	#category : #'Athens-SVG-Support'
+	#category : #'Athens-SVG-Support-Base'
 }
 
 { #category : #'xml support' }
@@ -283,18 +283,6 @@ SVGAttributes >> height [
 SVGAttributes >> height: anObject [
 
 	height := anObject isString ifTrue: [anObject asNumber] ifFalse: [anObject]
-]
-
-{ #category : #'initialize-release' }
-SVGAttributes >> initialize [
-	"Initialize a newly created instance. This method must answer the receiver."
-
-	super initialize.
-	" *** Edit the following to properly initialize instance variables ***"
-	strokeWidth := nil.
-	fillRule := nil.
-	" *** And replace this comment with additional initialization code *** "
-	^self
 ]
 
 { #category : #accessing }
