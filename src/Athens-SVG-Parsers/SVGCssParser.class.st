@@ -66,15 +66,6 @@ SVGCssParser class >> startingStateForCss [
 	^ 1
 ]
 
-{ #category : #'VisualWorks metadata' }
-SVGCssParser class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'SVGViewer'
-		'superclassNamespace' 'Refactory.SmaCC'
-	)
-]
-
 { #category : #accessing }
 SVGCssParser >> attributes [
 

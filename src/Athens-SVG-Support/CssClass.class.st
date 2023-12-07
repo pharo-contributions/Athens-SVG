@@ -202,14 +202,6 @@ CssClass class >> new [
 	^super new initialize
 ]
 
-{ #category : #'VisualWorks metadata' }
-CssClass class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'SVGViewer'
-	)
-]
-
 { #category : #accessing }
 CssClass >> attributes [
 

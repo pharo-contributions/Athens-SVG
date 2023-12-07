@@ -57,15 +57,6 @@ SVGStyleParser class >> startingStateForStyleListOrNil [
 	^1
 ]
 
-{ #category : #'VisualWorks metadata' }
-SVGStyleParser class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'SVGViewer'
-		'superclassNamespace' 'Refactory.SmaCC'
-	)
-]
-
 { #category : #accessing }
 SVGStyleParser >> attributes [
 

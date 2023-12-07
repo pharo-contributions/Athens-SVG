@@ -20,15 +20,6 @@ SVGCssScanner class >> states [
 	^ #(#default)
 ]
 
-{ #category : #'VisualWorks metadata' }
-SVGCssScanner class >> visualWorksMetadata [
-
-	^ #(
-		'namespace' 'SVGViewer'
-		'superclassNamespace' 'Refactory.SmaCC'
-	)
-]
-
 { #category : #generated }
 SVGCssScanner >> emptySymbolTokenId [
 	^ 37
