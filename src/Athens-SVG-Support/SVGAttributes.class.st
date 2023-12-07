@@ -56,13 +56,6 @@ Class {
 	#category : #'Athens-SVG-Support'
 }
 
-{ #category : #'instance creation' }
-SVGAttributes class >> new [
-	"Answer a newly created and initialized instance."
-
-	^super new initialize
-]
-
 { #category : #'xml support' }
 SVGAttributes >> colorAttribute3: aString [
 
