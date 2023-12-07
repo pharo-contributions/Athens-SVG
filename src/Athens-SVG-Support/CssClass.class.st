@@ -1,3 +1,6 @@
+"
+A CSS class for styling
+"
 Class {
 	#name : #CssClass,
 	#superclass : #Object,
@@ -8,7 +11,7 @@ Class {
 	#classVars : [
 		'CSSColors'
 	],
-	#category : #'Athens-SVG-Support'
+	#category : #'Athens-SVG-Support-Base'
 }
 
 { #category : #'instance creation' }
@@ -26,19 +29,16 @@ CssClass class >> addColor: colorName from: rgbSpec [
 				range: 255)
 ]
 
-{ #category : #'VisualWorks metadata' }
+{ #category : #accessing }
 CssClass class >> cssColorNamed: aStringOrSymbol [
-	"Transcript
-		cr;
-		show: aStringOrSymbol."
 
-	^CSSColors at: aStringOrSymbol asSymbol ifAbsent: [nil]
+	^ CSSColors at: aStringOrSymbol asSymbol ifAbsent: [ nil ]
 ]
 
 { #category : #'instance creation' }
 CssClass class >> initializeCssColorConstants [
 	"List taken from the website: https://www.w3.org/TR/SVG/types.html#ColorKeywords"
-	"self initializeCssColorConstants"
+	<script>
 
 	| tokens |
 	tokens := ('aliceblue	rgb(240, 248, 255)
@@ -198,7 +198,7 @@ CssClass class >> initializeCssColorConstants [
 { #category : #accessing }
 CssClass >> attributes [
 
-	^attributes ifNil: [attributes := SVGAttributes new]
+	^ attributes ifNil: [ attributes := SVGAttributes new ]
 ]
 
 { #category : #accessing }
@@ -210,7 +210,7 @@ CssClass >> attributes: anObject [
 { #category : #accessing }
 CssClass >> identifier [
 
-	^identifier
+	^ identifier
 ]
 
 { #category : #accessing }

@@ -7,8 +7,8 @@ CssClass >> cssFromAttributes: aString [
 	So we have to get rid of the curly braces."
 
 	| aParser |
-	aParser := SVGStyleParser
-				on: (aString copyFrom: 2 to: aString size - 1) readStream.
+	aParser := SVGStyleParser on:
+		           (aString copyFrom: 2 to: aString size - 1) readStream.
 	aParser parse.
 	self attributes: aParser attributes
 ]
