@@ -1,3 +1,6 @@
+"
+An animation in SVG
+"
 Class {
 	#name : #ASAnimation,
 	#superclass : #Object,
@@ -13,6 +16,7 @@ Class {
 
 { #category : #accessing }
 ASAnimation >> duration [
+
 	^ Time millisecondClockValue - started
 ]
 
@@ -28,13 +32,13 @@ ASAnimation >> finishAction: anObject [
 	finishAction := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #stepping }
 ASAnimation >> start [
 
 	started := Time millisecondClockValue
 ]
 
-{ #category : #accessing }
+{ #category : #stepping }
 ASAnimation >> step [
 
 	(stopCondition value: self )
