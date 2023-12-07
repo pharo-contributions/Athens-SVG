@@ -4,22 +4,22 @@ An ASVGMorphTest is a test class for testing the behavior of ASVGMorph
 Class {
 	#name : #ASVGMorphTest,
 	#superclass : #TestCase,
-	#category : #'Athens-SVG-Tests'
+	#category : #'Athens-SVG-Tests-Morphic'
 }
 
-{ #category : #tests }
+{ #category : #'tests - test data' }
 ASVGMorphTest class >> iconSVGFileContent [
 
-	^'<?xml version="1.0" standalone="no"?>
+	^ '<?xml version="1.0" standalone="no"?>
 <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 1024 1024">
   <path d="M854.6 288.7c6 6 9.4 14.1 9.4 22.6V928c0 17.7-14.3 32-32 32H192c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32h424.7c8.5 0 16.7 3.4 22.7 9.4l215.2 215.3zM790.2 326L602 137.8V326h188.2z"/>
 </svg>'
 ]
 
-{ #category : #tests }
+{ #category : #'tests - test data' }
 ASVGMorphTest class >> inkscapeSVGFileContent [
 
-	^'<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	^ '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -62,8 +62,9 @@ ASVGMorphTest >> testSvgIcon [
 
 	| morph |
 	morph := ASVGMorph new
-		svg: (AthensSVGConverter new importXMLDocument: (XMLDOMParser parse: self class iconSVGFileContent));
-	yourself.
+		         svg: (AthensSVGConverter new importXMLDocument:
+					          (XMLDOMParser parse: self class iconSVGFileContent));
+		         yourself.
 
 	self assert: (morph isKindOf: Morph)
 ]
@@ -73,8 +74,9 @@ ASVGMorphTest >> testSvgInkscape [
 
 	| morph |
 	morph := ASVGMorph new
-		svg: (AthensSVGConverter new importXMLDocument: (XMLDOMParser parse: self class inkscapeSVGFileContent));
-	yourself.
+		         svg: (AthensSVGConverter new importXMLDocument:
+					          (XMLDOMParser parse: self class inkscapeSVGFileContent));
+		         yourself.
 
 	self assert: (morph isKindOf: Morph)
 ]
