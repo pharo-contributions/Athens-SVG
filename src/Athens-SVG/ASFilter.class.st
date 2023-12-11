@@ -1,3 +1,6 @@
+"
+Used for imaging operations performed via filter effects
+"
 Class {
 	#name : #ASFilter,
 	#superclass : #ASElement,
@@ -10,12 +13,12 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #filtering }
 ASFilter >> color_interpolation_filters: aString [
 	self attributeAt: #color_interpolation_filters put: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #filtering }
 ASFilter >> filterUnits: aString [
 	self attributeAt: #filterUnits put: aString
 ]
@@ -25,7 +28,7 @@ ASFilter >> height: aString [
 	height := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #filtering }
 ASFilter >> primitiveUnits: aString [
 	self attributeAt: #primitiveUnits put: aString
 ]

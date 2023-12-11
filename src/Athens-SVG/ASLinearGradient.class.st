@@ -1,3 +1,6 @@
+"
+Linear gradient
+"
 Class {
 	#name : #ASLinearGradient,
 	#superclass : #ASGradient,

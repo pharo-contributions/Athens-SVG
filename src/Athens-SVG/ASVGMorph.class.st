@@ -1,3 +1,6 @@
+"
+An SVG morph
+"
 Class {
 	#name : #ASVGMorph,
 	#superclass : #Morph,
@@ -84,7 +87,7 @@ ASVGMorph >> drawOn: aCanvas [
 	aCanvas translucentImage: surface asForm at: self innerBounds origin
 ]
 
-{ #category : #initialize }
+{ #category : #initialization }
 ASVGMorph >> initialize [
 	super initialize.
 	zoom :=1

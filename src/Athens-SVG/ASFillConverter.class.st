@@ -1,3 +1,6 @@
+"
+A converter to fill with a specific paint
+"
 Class {
 	#name : #ASFillConverter,
 	#superclass : #ASConverter,

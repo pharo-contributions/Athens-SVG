@@ -1,3 +1,6 @@
+"
+A style
+"
 Class {
 	#name : #ASStyle,
 	#superclass : #ASElement,

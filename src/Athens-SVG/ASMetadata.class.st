@@ -1,3 +1,6 @@
+"
+SVG metadata
+"
 Class {
 	#name : #ASMetadata,
 	#superclass : #ASElement,

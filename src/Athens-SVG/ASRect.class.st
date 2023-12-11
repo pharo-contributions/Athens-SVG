@@ -27,51 +27,51 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASRect >> height: aString [
 
 	height := self translateNumber: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 ASRect >> initialize [
 	super initialize.
 
 	x := y := rx := ry := 0
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASRect >> rx: aString [
 
 	rx := self translateNumber: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASRect >> ry: aString [
 
 	ry := self translateNumber: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'private - rendering' }
 ASRect >> setShapeOn: aCanvas [
 	aCanvas setShape: (Rectangle origin: x@y extent: width@height).
 
 	"todo: take rx, ry into account"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASRect >> width: aString [
 
 	width := self translateNumber: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASRect >> x: aString [
 
 	x := self translateNumber: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASRect >> y: aString [
 
 	y := self translateNumber: aString

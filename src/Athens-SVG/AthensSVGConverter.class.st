@@ -1,3 +1,6 @@
+"
+Converter from XML to SVG document (root)
+"
 Class {
 	#name : #AthensSVGConverter,
 	#superclass : #Object,
@@ -21,14 +24,14 @@ AthensSVGConverter class >> fromURL: anUrl [
 	^ self new importXMLDocument: doc
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 AthensSVGConverter >> g [
 	"group"
 
 	node attributes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #importing }
 AthensSVGConverter >> importXMLDocument: doc [
 
 	| root |
@@ -39,7 +42,7 @@ AthensSVGConverter >> importXMLDocument: doc [
 	^ ASVGRoot new translate: root first
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #visiting }
 AthensSVGConverter >> visitNode: aNode [
 	| oldNode |
 	oldNode := node.

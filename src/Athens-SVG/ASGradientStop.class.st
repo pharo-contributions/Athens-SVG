@@ -1,3 +1,6 @@
+"
+Gradients are defined by a series of color stops in the gradient bar. A stop is the point at which a gradient changes from one color to the next, 
+"
 Class {
 	#name : #ASGradientStop,
 	#superclass : #ASElement,
@@ -9,7 +12,7 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #converting }
 ASGradientStop >> asRampColorWithOpacity: aFloat [
 
 		color ifNil: [ color := Color white ].
@@ -17,34 +20,34 @@ ASGradientStop >> asRampColorWithOpacity: aFloat [
 		^ Association key: offset value: (color alpha: self opacity * aFloat)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASGradientStop >> offset [
 	^ offset
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASGradientStop >> offset: aString [
 	offset := self translateNumber: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASGradientStop >> opacity [
 	^ opacity ifNil: [1]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASGradientStop >> setOpacity: number [
 
 	color := color alpha: number
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASGradientStop >> stop_color: aString [
 
 	color := self translateColor: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASGradientStop >> stop_opacity: aString [
 
 	opacity := self translateNumber: aString

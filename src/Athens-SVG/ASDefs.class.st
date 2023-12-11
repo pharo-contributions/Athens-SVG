@@ -1,3 +1,6 @@
+"
+SVG definition
+"
 Class {
 	#name : #ASDefs,
 	#superclass : #ASContainerElement,
@@ -11,6 +14,5 @@ ASDefs >> renderOn: aCanvas [
 
 { #category : #rendering }
 ASDefs >> renderShapeOn: aCanvas [
-
-	"defs are not rendered directly"
+	"Defs are not rendered directly"
 ]
