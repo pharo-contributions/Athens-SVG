@@ -1,3 +1,6 @@
+"
+Abstract superclass for SVG gradients
+"
 Class {
 	#name : #ASGradient,
 	#superclass : #ASContainerElement,

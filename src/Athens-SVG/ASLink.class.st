@@ -1,3 +1,6 @@
+"
+A link
+"
 Class {
 	#name : #ASLink,
 	#superclass : #Object,
@@ -9,7 +12,7 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 ASLink class >> url: aString [
 
 	^ self new url: aString

@@ -1,3 +1,6 @@
+"
+An SVG path
+"
 Class {
 	#name : #ASPath,
 	#superclass : #ASShape,
@@ -10,7 +13,7 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 ASPath >> buildPathOn: aCanvas [
 
 	pathCache := WeakArray with: aCanvas surface.
@@ -22,14 +25,14 @@ ASPath >> buildPathOn: aCanvas [
 	]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 ASPath >> checkCacheFor: aCanvas [
 
 	pathCache ifNil: [ ^ self buildPathOn: aCanvas ].
 	pathCache first == aCanvas surface ifFalse: [ ^ self buildPathOn: aCanvas ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASPath >> d: aString [
 
 "	d = 'path data'
@@ -44,7 +47,7 @@ ASPath >> d: aString [
 	bbox := conv bbox
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'private - rendering' }
 ASPath >> setShapeOn: aCanvas [
 
 	self checkCacheFor: aCanvas.

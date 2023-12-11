@@ -1,3 +1,6 @@
+"
+A converter applying transformation
+"
 Class {
 	#name : #ASTransformConverter,
 	#superclass : #ASConverter,

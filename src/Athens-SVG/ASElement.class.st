@@ -202,7 +202,7 @@ ASElement >> inheritedAttributeAt: name ifAbsent: aBlock [
 		ifNotNil: [ parent inheritedAttributeAt: name ifAbsent: aBlock ] ]
 ]
 
-{ #category : #initialize }
+{ #category : #initialization }
 ASElement >> initialize [
 
 	attributes := EmptyDict

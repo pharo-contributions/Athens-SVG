@@ -1,10 +1,13 @@
+"
+An SVG Polyline
+"
 Class {
 	#name : #ASPolyLine,
 	#superclass : #ASPolygon,
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'private - rendering' }
 ASPolyLine >> setShapeOn: aCanvas [
 	| path |
 

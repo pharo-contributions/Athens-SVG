@@ -1,3 +1,6 @@
+"
+A circle
+"
 Class {
 	#name : #ASCircle,
 	#superclass : #ASShape,
@@ -9,7 +12,7 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASCircle >> cx: aString [
 "cx = <coordinate>
 The x-axis coordinate of the center of the circle.
@@ -18,7 +21,7 @@ If the attribute is not specified, the effect is as if a value of '0'  were spec
 	cx := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASCircle >> cy: aString [
 
 "cy = <coordinate>
@@ -28,14 +31,14 @@ If the attribute is not specified, the effect is as if a value of 0 were specifi
 	cy := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 ASCircle >> initialize [
 	super initialize.
 
 	cx := cy := 0
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASCircle >> r: aString [
 
 "r = <length>
@@ -47,7 +50,7 @@ Animatable: yes.
 	r := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'private - rendering' }
 ASCircle >> setShapeOn: aCanvas [
 	| circle |
 

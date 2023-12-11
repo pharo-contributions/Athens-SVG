@@ -1,3 +1,6 @@
+"
+An SVG polygon
+"
 Class {
 	#name : #ASPolygon,
 	#superclass : #ASShape,
@@ -7,11 +10,11 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASPolygon >> points: aString [
+	"Parse polygon points"
 
-	"parse polygon points"
-	| pts x y conv stream |
+	| x y conv stream |
 
 	points := OrderedCollection new.
 	stream := aString readStream.
@@ -37,7 +40,7 @@ ASPolygon >> points: aString [
 	^ points
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'private - rendering' }
 ASPolygon >> setShapeOn: aCanvas [
 	| path |
 

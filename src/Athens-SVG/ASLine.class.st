@@ -1,3 +1,6 @@
+"
+A line
+"
 Class {
 	#name : #ASLine,
 	#superclass : #ASShape,
@@ -10,7 +13,7 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'private - rendering' }
 ASLine >> setShapeOn: aCanvas [
 	| path |
 
@@ -24,22 +27,22 @@ ASLine >> setShapeOn: aCanvas [
 	aCanvas setShape: path
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASLine >> x1: aString [
 	x1 := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASLine >> x2: aString [
 	x2 := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASLine >> y1: aString [
 	y1 := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASLine >> y2: aString [
 	y2 := self translateLength: aString
 ]

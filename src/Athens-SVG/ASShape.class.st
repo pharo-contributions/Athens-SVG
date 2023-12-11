@@ -1,3 +1,6 @@
+"
+Abstract superclass for an SVG shape
+"
 Class {
 	#name : #ASShape,
 	#superclass : #ASElement,
@@ -10,7 +13,7 @@ ASShape class >> isAbstract [
 	^ self == ASShape
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #rendering }
 ASShape >> renderShapeOn: aCanvas [
 
 "	(self id ='path3070-4' ) ifTrue: [ self halt ]."
@@ -22,7 +25,7 @@ ASShape >> renderShapeOn: aCanvas [
 	self stroke stroke: self on: aCanvas
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'private - rendering' }
 ASShape >> setShapeOn: aCanvas [
 	self subclassResponsibility
 ]

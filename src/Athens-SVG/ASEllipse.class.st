@@ -1,3 +1,6 @@
+"
+An ellipse
+"
 Class {
 	#name : #ASEllipse,
 	#superclass : #ASShape,
@@ -10,7 +13,7 @@ Class {
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASEllipse >> cx: aString [
 "cx = <coordinate>
 The x-axis coordinate of the center of the circle.
@@ -19,7 +22,7 @@ If the attribute is not specified, the effect is as if a value of '0'  were spec
 	cx := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASEllipse >> cy: aString [
 
 "cy = <coordinate>
@@ -29,19 +32,19 @@ If the attribute is not specified, the effect is as if a value of 0 were specifi
 	cy := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASEllipse >> rx: aString [
 
 	rx := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASEllipse >> ry: aString [
 
 	ry := self translateLength: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'private - rendering' }
 ASEllipse >> setShapeOn: aCanvas [
 	| circle |
 

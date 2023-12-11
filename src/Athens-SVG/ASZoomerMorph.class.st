@@ -1,3 +1,6 @@
+"
+A morph to zoom an SVG
+"
 Class {
 	#name : #ASZoomerMorph,
 	#superclass : #Morph,
@@ -17,7 +20,7 @@ Class {
 	#category : #'Athens-SVG-Morphic'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> animateZoomTo: zoomLevel [
 
 
@@ -42,11 +45,11 @@ ASZoomerMorph >> animateZoomTo: zoomLevel [
 	self startStepping
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #drawing }
 ASZoomerMorph >> drawDropShadowOn: aCanvas [
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #drawing }
 ASZoomerMorph >> drawOn: aCanvas [
 
 	svg ifNotNil: [
@@ -66,7 +69,7 @@ ASZoomerMorph >> drawOn: aCanvas [
 	]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> extent: pos [
 
 	super extent: pos.
@@ -74,19 +77,19 @@ ASZoomerMorph >> extent: pos [
 	animCenter := self bounds center
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'event handling' }
 ASZoomerMorph >> handlesDropShadowInHand [
 	"Answer whether the receiver will handle drop shadow drawing when picked up in the hand."
 
 	^ true
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'event handling' }
 ASZoomerMorph >> handlesMouseOver: evt [
 	^ true
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 ASZoomerMorph >> initialize [
 
 
@@ -96,7 +99,7 @@ ASZoomerMorph >> initialize [
 	basicExtent  := self extent
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'dropping/grabbing' }
 ASZoomerMorph >> justDroppedInto: aMorph event: anEvent [
 
 	super justDroppedInto: aMorph event: anEvent.
@@ -104,35 +107,35 @@ ASZoomerMorph >> justDroppedInto: aMorph event: anEvent [
 	animCenter := self bounds center
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> maxAnimationDuration [
 	^ 100
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> maxZoom [
 
 	^ maxZoom ifNil: [ maxZoom := 2 ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> maxZoom: aValue [
 
 	maxZoom := aValue max: 1
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'event handling' }
 ASZoomerMorph >> mouseEnter: evt [
 	self comeToFront.
 	self animateZoomTo: self maxZoom
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'event handling' }
 ASZoomerMorph >> mouseLeave: evt [
 	self animateZoomTo: 1
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> position: pos [
 
 	super position: pos.
@@ -140,12 +143,12 @@ ASZoomerMorph >> position: pos [
 	animCenter := self bounds center
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> screenDPI [
 	^ 96 "just a guess "
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> setZoom: aZoom [
 	|  newExtent oldCenter |
 	currentZoom := aZoom.
@@ -158,7 +161,7 @@ ASZoomerMorph >> setZoom: aZoom [
 	self changed
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #stepping }
 ASZoomerMorph >> step [
 
 	currentAnimation ifNotNil: [
@@ -166,18 +169,18 @@ ASZoomerMorph >> step [
 		]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #stepping }
 ASZoomerMorph >> stepTime [
 	^ 20
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> svg: anSVG [
 
 	^ self svg: anSVG zoom: 1
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 ASZoomerMorph >> svg: anSVG zoom: anSvgZoom [
 	| w h |
 
@@ -202,7 +205,7 @@ ASZoomerMorph >> svg: anSVG zoom: anSvgZoom [
 	self changed
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 ASZoomerMorph >> wantsToBeDroppedInto: aMorph [
 
 	^ aMorph isWorldMorph

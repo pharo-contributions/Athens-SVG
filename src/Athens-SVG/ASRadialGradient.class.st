@@ -1,3 +1,6 @@
+"
+Radial gradient
+"
 Class {
 	#name : #ASRadialGradient,
 	#superclass : #ASGradient,

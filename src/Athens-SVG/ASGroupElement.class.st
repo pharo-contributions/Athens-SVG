@@ -1,3 +1,6 @@
+"
+SVG group element
+"
 Class {
 	#name : #ASGroupElement,
 	#superclass : #ASContainerElement,

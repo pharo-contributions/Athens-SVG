@@ -1,97 +1,100 @@
+"
+Gives easy access to the different SVG node classes from an XML node
+"
 Class {
 	#name : #ASVGNodeClasses,
 	#superclass : #Object,
 	#category : #'Athens-SVG-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses class >> fromName: aNodeName [
 	(self canUnderstand: aNodeName asSymbol) ifTrue: [ ^ self new perform: aNodeName asSymbol ]
 	ifFalse: [ ^ ASMetadata ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> circle [
 	^ ASCircle
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> defs [
 	^ ASDefs
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> desc [
 	^ ASMetadata
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> ellipse [
 	^ ASEllipse
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> filter [
 	^ ASFilter
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> g [
 	^ ASGroupElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> line [
 	^ ASLine
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> linearGradient [
 	^ ASLinearGradient
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> metadata [
 	^ ASMetadata
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> path [
 	^ ASPath
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> polygon [
 	^ ASPolygon
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> polyline [
 	^ ASPolyLine
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> radialGradient [
 	^ ASRadialGradient
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> rect [
 	^ ASRect
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> stop [
 
 	^ ASGradientStop
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> style [
 	^ ASStyle
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #factory }
 ASVGNodeClasses >> text [
 	^ ASText
 ]
